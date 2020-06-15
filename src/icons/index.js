@@ -2,7 +2,7 @@ import Vue from "vue";
 import SvgIcon from "@/components/SvgIcon";
 
 // register globally
-Vue.component("svg-icon", SvgIcon);
+Vue.component("SvgIcon", SvgIcon);
 
 /**
  * 用webpack的require.context() 简化你的代码

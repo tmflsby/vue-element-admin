@@ -7,6 +7,7 @@ import ElementUI from "element-ui";
 import "normalize.css";
 import "./styles/index.scss";
 import "./styles/element-variables.scss";
+import "./icons";
 
 Vue.use(ElementUI, {
   size: Cookies.get('size') || 'medium' // set element-ui default size
