@@ -12,19 +12,30 @@ import Layout from "@/layout";
  * all roles can be accessed
  */
 export const constantRoutes = [
-    {
-    path: '/',
+  {
+    path: '/redirect',
     component: Layout,
-    redirect: '/dashboard',
+    hidden: true,
     children: [
       {
-        path: 'dashboard',
-        component: () => import('@/views/Dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index')
       }
     ]
-  }
+  },
+  {
+  path: '/',
+  component: Layout,
+  redirect: '/dashboard',
+  children: [
+    {
+      path: 'dashboard',
+      component: () => import('@/views/dashboard/index'),
+      name: 'Dashboard',
+      meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+    }
+  ]
+}
 ];
 
 /**

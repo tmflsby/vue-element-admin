@@ -1,3 +1,10 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -20,13 +27,13 @@ html {
 }
 
 *,
-*::before,
-*::after {
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 .no-padding {
-  padding: 0 !important;
+  padding: 0px !important;
 }
 
 .padding-content {
@@ -75,17 +82,17 @@ div:focus {
 }
 
 .inlineBlock {
-  display: inline-block;
+  display: block;
 }
 
 .clearfix {
-  &::after {
-    content: " ";
-    display: block;
+  &:after {
     visibility: hidden;
+    display: block;
     font-size: 0;
-    height: 0;
+    content: " ";
     clear: both;
+    height: 0;
   }
 }
 
@@ -112,7 +119,7 @@ aside {
   }
 }
 
-// main-container 全局样式
+//main-container全局样式
 .app-container {
   padding: 20px;
 }
@@ -127,7 +134,7 @@ aside {
 }
 
 .text-center {
-  text-align: center;
+  text-align: center
 }
 
 .sub-navbar {
@@ -138,11 +145,7 @@ aside {
   text-align: right;
   padding-right: 20px;
   transition: 600ms ease position;
-  background: linear-gradient(90deg,
-    rgba(32, 182, 249, 1) 0%,
-    rgba(32, 182, 249, 1) 0%,
-    rgba(33, 120, 241, 1) 100%,
-    rgba(33, 120, 241, 1) 100%);
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
 
   .subtitle {
     font-size: 20px;
@@ -150,11 +153,11 @@ aside {
   }
 
   &.draft {
-    background-color: #d0d0d0;
+    background: #d0d0d0;
   }
 
   &.deleted {
-    background-color: #d0d0d0;
+    background: #d0d0d0;
   }
 }
 
@@ -178,7 +181,7 @@ aside {
   }
 }
 
-// refine vue-mutiselect plugin
+//refine vue-multiselect plugin
 .multiselect {
   line-height: 16px;
 }

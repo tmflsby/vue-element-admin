@@ -30,7 +30,7 @@ export default {
     this.$_destroyResizeEvent();
     this.$_destroySidebarResizeEvent();
   },
-  method: {
+  methods: {
     // use $_ for mixins properties
     // https://vuejs.org/v2/style-guide/index.html#Private-property-names-essential
     $_initResizeEvent() {

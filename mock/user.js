@@ -23,10 +23,10 @@ const users = {
   }
 };
 
-export default [
+module.exports = [
   // user login
   {
-    url: '/user/login',
+    url: '/vue-element-admin/user/login',
     type: 'post',
     response: config => {
       const { username } = config.body;
@@ -50,7 +50,7 @@ export default [
   // get user info
   {
     // eslint-disable-next-line no-useless-escape
-    url: '/user/info\.*',
+    url: '/vue-element-admin/user/info\.*',
     type: 'get',
     response: config => {
       const { token } = config.query;
@@ -73,7 +73,7 @@ export default [
 
   // user logout
   {
-    url: '/user/logout',
+    url: '/vue-element-admin/user/logout',
     type: 'post',
     // eslint-disable-next-line no-unused-vars
     response: _ => {
