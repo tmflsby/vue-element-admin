@@ -24,6 +24,16 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
+  {
+    path: '/auth-redirect',
+    component: () => import('@/views/login/AuthRedirect'),
+    hidden: true
+  },
+  {
   path: '/',
   component: Layout,
   redirect: '/dashboard',
