@@ -9,6 +9,7 @@ import "./styles/index.scss";   // global css
 import "./styles/element-variables.scss";
 import "./icons";   // icon
 import * as filters from "./filters";   // global filters
+import "./permission"   // permission control
 
 /**
  * If you don't want to use mock-server

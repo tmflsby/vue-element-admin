@@ -19,17 +19,17 @@ export default {
 
     if (icon) {
       if (icon.includes("el-icon")) {
-        // vnodes.push(<i class={[icon, 'sub-el-icon']} />);
-        vnodes.push(`<i class=${[icon, "sub-el-icon"]}></i>`);
+        vnodes.push(<i class={[icon, 'sub-el-icon']} />);
+        // vnodes.push(`<i class=${[icon, "sub-el-icon"]}></i>`);
       } else {
-        // vnodes.push(<SvgIcon icon-class={icon}/>);
-        vnodes.push(`<SvgIcon icon-class=${icon}></SvgIcon>`);
+        vnodes.push(<SvgIcon icon-class={icon}/>);
+        // vnodes.push(`<SvgIcon icon-class=${icon}></SvgIcon>`);
       }
     }
 
     if (title) {
-      // vnodes.push(<span slot='title'>{(title)}</span>);
-      vnodes.push(`<span slot="title">{{ ${title} }}</span>`);
+      vnodes.push(<span slot='title'>{(title)}</span>);
+      // vnodes.push(`<span slot="title">{{ ${title} }}</span>`);
     }
 
     return vnodes
