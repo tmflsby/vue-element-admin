@@ -24,13 +24,12 @@ export default {
   watch: {
     defaultTheme: {
       // eslint-disable-next-line no-unused-vars
-      handler: (val, oldVal) => {
+      handler: function(val, oldVal) {
         this.theme = val;
       },
       immediate: true
     },
     async theme(val) {
-      console.log(this.chalk);
       const oldVal = this.chalk ? this.theme : ORIGINAL_THEME;
       if (typeof val !== "string") return;
       const themeCluster = this.getThemeCluster(val.replace("#", ""));

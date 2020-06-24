@@ -65,7 +65,7 @@ export default {
         this.$router.push(redirect);
         return
       }
-      this.$router.push(this.pathCompile(path));
+      this.$router.push(path);
     }
   }
 }

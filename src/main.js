@@ -4,12 +4,13 @@ import router from './router';
 import store from './store';
 import Cookies from "js-cookie";
 import ElementUI from "element-ui";
+import * as filters from "./filters";   // global filters
 import "normalize.css";   // a modern alternative to CSS resets
 import "./styles/index.scss";   // global css
 import "./styles/element-variables.scss";
 import "./icons";   // icon
-import * as filters from "./filters";   // global filters
 import "./permission"   // permission control
+import "./utils/error-log"   // error log
 
 /**
  * If you don't want to use mock-server
