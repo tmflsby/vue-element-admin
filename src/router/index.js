@@ -6,6 +6,9 @@ Vue.use(VueRouter);
 /* Layout */
 import Layout from "@/layout";
 
+/* Router Modules */
+import nestedRouter from "./modules/nested"
+
 /**
  * constantRoutes
  * a base page that does not have permission requirements
@@ -166,7 +169,8 @@ export const constantRoutes = [
         meta: { title: 'Clipboard', icon: 'clipboard' }
       }
     ]
-  }
+  },
+  nestedRouter
 ];
 
 /**
