@@ -18,7 +18,7 @@
 <script>
 import RightPanel from "@/components/RightPanel";
 import { AppMain, NavBar, Sidebar, Settings, TagsView } from "./components";
-import ResizeHandler from "./mixin/ResizeHandler";
+import ResizeHandler from "./mixins/ResizeHandler";
 import { mapState } from "vuex";
 export default {
   name: "Layout",

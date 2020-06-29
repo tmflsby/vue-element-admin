@@ -186,7 +186,7 @@ const asyncRoutes = [
       },
       {
         path: 'mixin',
-        component: 'views/components-demo/mixin',
+        component: 'views/components-demo/mixins',
         name: 'ComponentMixinDemo',
         meta: { title: 'componentMixin' }
       },

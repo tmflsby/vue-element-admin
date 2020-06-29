@@ -7,7 +7,8 @@ Vue.use(VueRouter);
 import Layout from "@/layout";
 
 /* Router Modules */
-import nestedRouter from "./modules/nested"
+import nestedRouter from "./modules/nested";
+import chartsRouter from "./modules/charts";
 
 /**
  * constantRoutes
@@ -170,7 +171,8 @@ export const constantRoutes = [
       }
     ]
   },
-  nestedRouter
+  nestedRouter,
+  chartsRouter
 ];
 
 /**

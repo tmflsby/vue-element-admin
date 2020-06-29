@@ -25,7 +25,7 @@ import path from "path";
 import { isExternal } from "@/utils/validate";
 import Item from "./Item";
 import AppLink from "./AppLink";
-import FixIOSBug from "./mixin/FixIOSBug";
+import FixIOSBug from "./mixins/FixIOSBug";
 export default {
   name: "SideBarItem",
   components: { Item, AppLink },
