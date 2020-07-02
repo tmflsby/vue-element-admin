@@ -5,7 +5,8 @@
  * @returns {string|null}
  */
 export const parseTime = (time, cFormat) => {
-  if (this.arguments.length === 0) {
+  // eslint-disable-next-line no-undef
+  if (arguments.length === 0) {
     return null
   }
   const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
