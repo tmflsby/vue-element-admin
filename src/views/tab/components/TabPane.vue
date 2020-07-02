@@ -57,6 +57,16 @@ export default {
       default: "CN"
     }
   },
+  filters: {
+    statusFilter(status) {
+      const statusMap = {
+        published: "success",
+        draft: "info",
+        deleted: "danger"
+      };
+      return statusMap[status]
+    }
+  },
   data() {
     return {
       list: null,
@@ -67,16 +77,6 @@ export default {
         sort: "+id"
       },
       loading: false
-    }
-  },
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: "success",
-        draft: "info",
-        deleted: "danger"
-      };
-      return statusMap[status]
     }
   },
   created() {
