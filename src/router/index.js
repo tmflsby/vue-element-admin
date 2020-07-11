@@ -9,6 +9,7 @@ import Layout from "@/layout";
 /* Router Modules */
 import nestedRouter from "./modules/nested";
 import chartsRouter from "./modules/charts";
+import tableRouter from "./modules/table";
 
 /**
  * constantRoutes
@@ -208,6 +209,7 @@ export const asyncRoutes = [
   },
   nestedRouter,
   chartsRouter,
+  tableRouter,
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true },
 ];
