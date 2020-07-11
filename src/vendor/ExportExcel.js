@@ -100,11 +100,11 @@ const sheet_from_array_of_arrays = (data, opts) => {
   return ws;
 };
 
-const Workbook = () => {
+function Workbook() {
   if (!(this instanceof Workbook)) return new Workbook();
   this.SheetNames = [];
   this.Sheets = {};
-};
+}
 
 const s2ab = (s) => {
   let buf = new ArrayBuffer(s.length);
