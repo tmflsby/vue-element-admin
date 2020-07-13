@@ -11,6 +11,7 @@ import nestedRouter from "./modules/nested";
 import chartsRouter from "./modules/charts";
 import tableRouter from "./modules/table";
 import excelRouter from "./modules/excel";
+import permissionRouter from "./modules/permission";
 
 /**
  * constantRoutes
@@ -230,6 +231,7 @@ export const asyncRoutes = [
   chartsRouter,
   tableRouter,
   excelRouter,
+  permissionRouter,
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true },
 ];

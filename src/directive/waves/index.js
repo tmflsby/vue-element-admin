@@ -6,8 +6,7 @@ const install = (Vue) => {
 
 if (window.Vue) {
   window.waves = waves;
-  // eslint-disable-next-line no-undef
-  Vue.use(install);
+  window.Vue.use(install);
 }
 
 waves.install = install;
