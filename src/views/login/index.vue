@@ -4,6 +4,7 @@
 
       <div class="title-container">
         <h3 class="title">Login Form</h3>
+        <LangSelect class="set-language"/>
       </div>
 
       <el-form-item prop="username">
@@ -55,13 +56,14 @@
       <br>
       <br>
       <br>
-      <social-sign />
+      <SocialSign/>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import { validUsername } from "@/utils/validate";
+import LangSelect from "@/components/LangSelect";
 import SocialSign from "./components/SocialSignIn";
 
 const validateUsername = (rule, value, callback) => {
@@ -81,7 +83,7 @@ const validatePassword = (rule, value, callback) => {
 
 export default {
   name: "Login",
-  components: { SocialSign },
+  components: { SocialSign, LangSelect },
   data() {
     return {
       loginForm: {
@@ -149,12 +151,12 @@ export default {
             this.loading = false;
           }).catch(() => {
             this.loading = false;
-          })
+          });
         } else {
           console.log("error submit!!!");
           return false
         }
-      })
+      });
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {
@@ -191,16 +193,16 @@ $cursor: #fff;
 
     input {
       background: transparent;
-      border: 0px;
+      border: 0;
       -webkit-appearance: none;
-      border-radius: 0px;
+      border-radius: 0;
       padding: 12px 5px 12px 15px;
       color: $light_gray;
       height: 47px;
       caret-color: $cursor;
 
       &:-webkit-autofill {
-        box-shadow: 0 0 0px 1000px $bg inset !important;
+        box-shadow: 0 0 0 1000px $bg inset !important;
         -webkit-text-fill-color: $cursor !important;
       }
     }
@@ -264,6 +266,15 @@ $light_gray:#eee;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
+    }
+
+    .set-language {
+      color: #fff;
+      position: absolute;
+      top: 3px;
+      font-size: 18px;
+      right: 0;
+      cursor: pointer;
     }
   }
 

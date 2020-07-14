@@ -110,6 +110,18 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   {
+    path: '/i18n',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/i18n/index'),
+        name: 'I18n',
+        meta: { title: 'i18n', icon: 'international' }
+      }
+    ]
+  },
+  {
     path: '/theme',
     component: Layout,
     children: [
@@ -249,6 +261,12 @@ const router = createRouter();
 export const resetRouter = () => {
   const newRouter = createRouter();
   router.matcher = newRouter.matcher; // reset router
+};
+
+const routerPush = VueRouter.prototype.push;
+
+VueRouter.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(error=> error);
 };
 
 export default router;

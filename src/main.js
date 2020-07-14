@@ -5,6 +5,7 @@ import store from './store';
 import Cookies from "js-cookie";
 import ElementUI from "element-ui";
 import * as filters from "./filters";   // global filters
+import i18n from "./lang";  // internationalization
 import "normalize.css";   // a modern alternative to CSS resets
 import "./styles/index.scss";   // global css
 import "./styles/element-variables.scss";
@@ -26,7 +27,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 Vue.use(ElementUI, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+  size: Cookies.get('size') || 'medium', // set element-ui default size
+  i18n: (key, value) => i18n.t(key, value)
 });
 
 // register global utility filters
@@ -39,5 +41,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app');

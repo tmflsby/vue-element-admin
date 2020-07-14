@@ -3,14 +3,14 @@
     <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
       <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
-          <Item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="onlyOneChild.meta.title"/>
+          <Item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="generateTitle(onlyOneChild.meta.title)"/>
         </el-menu-item>
       </AppLink>
     </template>
 
     <el-submenu v-else ref="subMenu" popper-append-to-body :index="resolvePath(item.path)">
       <template slot="title">
-        <Item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title"/>
+        <Item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="generateTitle(item.meta.title)"/>
       </template>
 
       <SideBarItem v-for="child in item.children" :key="child.path" :is-nest="true"
@@ -22,6 +22,7 @@
 
 <script>
 import path from "path";
+import { generateTitle } from "@/utils/i18n";
 import { isExternal } from "@/utils/validate";
 import Item from "./Item";
 import AppLink from "./AppLink";
@@ -52,6 +53,7 @@ export default {
     return {}
   },
   methods: {
+    generateTitle,
     hasOneShowingChild(children = [], parent) {
       const showingChildren =  children.filter(item => {
         if (item.hidden) {

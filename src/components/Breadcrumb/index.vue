@@ -3,10 +3,10 @@
     <transition-group class="breadcrumb">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
         <span v-if="item.redirect === 'noRedirect' || index === levelList.length - 1" class="no-redirect">
-          {{ item.meta.title }}
+          {{ generateTitle(item.meta.title) }}
         </span>
         <a v-else @click.prevent="handleLink(item)" href="">
-          {{ item.meta.title }}
+          {{ generateTitle(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { generateTitle } from "@/utils/i18n";
 import pathToRegexp from "path-to-regexp";
 export default {
   name: "Breadcrumb",
@@ -35,6 +36,7 @@ export default {
     this.getBreadcrumb();
   },
   methods: {
+    generateTitle,
     getBreadcrumb() {
       // only show routes with meta.title
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title);

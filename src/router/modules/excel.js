@@ -22,7 +22,7 @@ const excelRouter = {
       path: 'export-selected-excel',
       component: () => import('@/views/excel/SelectExcel'),
       name: 'SelectExcel',
-      meta: { title: 'Export Selected' }
+      meta: { title: 'Export Selected Excel' }
     },
     {
       path: 'export-merge-header',
