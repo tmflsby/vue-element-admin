@@ -134,18 +134,6 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/clipboard',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/clipboard/index'),
-        name: 'Clipboard',
-        meta: { title: 'Clipboard', icon: 'clipboard' }
-      }
-    ]
-  },
-  {
     path: '/icon',
     component: Layout,
     children: [
@@ -154,6 +142,18 @@ export const asyncRoutes = [
         component: () => import('@/views/icons/index'),
         name: 'Icons',
         meta: { title: 'Icons', icon: 'icon', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/clipboard',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/clipboard/index'),
+        name: 'Clipboard',
+        meta: { title: 'Clipboard', icon: 'clipboard' }
       }
     ]
   },
