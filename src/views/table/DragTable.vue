@@ -2,43 +2,43 @@
   <div class="app-container">
     <!-- Note that row-key is necessary to get a correct row order. -->
     <el-table ref="dragTable" v-loading="listLoading" :data="list" row-key="id" border fit highlight-current-row style="width: 100%">
-      <el-table-column align="center" label="ID" width="65">
+      <el-table-column align="center" :label="$t('table.id')" width="65">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="180px" align="center" label="Date">
+      <el-table-column width="180px" align="center" :label="$t('table.date')">
         <template slot-scope="{row}">
           <span>{{ row.timestamp | parseTime("{y}-{m}-{d} {h}:{i}") }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column min-width="300px" label="Title">
+      <el-table-column min-width="300px" :label="$t('table.title')">
         <template slot-scope="{row}">
           <span>{{ row.title }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="110px" align="center" label="Author">
+      <el-table-column width="110px" align="center" :label="$t('table.author')">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="100px" label="Importance">
+      <el-table-column width="100px" :label="$t('table.importance')">
         <template slot-scope="{row}">
           <SvgIcon v-for="n in + row.importance" :key="n" icon-class="star" class="icon-star"/>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Readings" width="95">
+      <el-table-column align="center" :label="$t('table.readings')" width="95">
         <template slot-scope="{row}">
           <span>{{ row.pageviews }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column class-name="status-col" label="Status" width="110">
+      <el-table-column class-name="status-col" :label="$t('table.status')" width="110">
         <template slot-scope="{row}">
           <el-tag :type="row.status | statusFilter">
             {{ row.status }}
@@ -46,17 +46,17 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Drag" width="80">
+      <el-table-column align="center" :label="$t('table.drag')" width="80">
         <template slot-scope="{}">
           <SvgIcon class="drag-handler" icon-class="drag"/>
         </template>
       </el-table-column>
     </el-table>
     <div class="show-d">
-      <el-tag>The default order :</el-tag> {{ oldList }}
+      <el-tag>{{ $t('table.dragTips1') }} :</el-tag> {{ oldList }}
     </div>
     <div class="show-d">
-      <el-tag>The after dragging order :</el-tag> {{ newList }}
+      <el-tag>{{ $t('table.dragTips2') }} :</el-tag> {{ newList }}
     </div>
   </div>
 </template>
