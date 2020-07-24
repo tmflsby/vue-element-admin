@@ -239,11 +239,21 @@ export const asyncRoutes = [
       }
     ]
   },
+  permissionRouter,
   nestedRouter,
   chartsRouter,
   tableRouter,
   excelRouter,
-  permissionRouter,
+  {
+    path: 'external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://github.com/tmflsby/vue-element-admin',
+        meta: { title: 'External Link', icon: 'link' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true },
 ];

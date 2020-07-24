@@ -15,6 +15,8 @@
         <el-tooltip :content="$t('navbar.Size')" effect="dark" placement="bottom">
           <SizeSelect id="size-select" class="right-menu-item hover-effect"/>
         </el-tooltip>
+
+        <LangSelect class="right-menu-item hover-effect"/>
       </template>
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
@@ -29,7 +31,7 @@
           <router-link to="/">
             <el-dropdown-item>{{ $t('navbar.Dashboard') }}</el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
+          <a target="_blank" href="https://github.com/tmflsby/vue-element-admin">
             <el-dropdown-item>{{ $t('navbar.Github') }}</el-dropdown-item>
           </a>
           <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
@@ -52,11 +54,12 @@ import ErrorLog from "@/components/ErrorLog";
 import ScreenFull from "@/components/ScreenFull";
 import SizeSelect from "@/components/SizeSelect";
 import HeaderSearch from "@/components/HeaderSearch";
+import LangSelect from "@/components/LangSelect";
 export default {
   name: "NavBar",
   components: {
-    Breadcrumb, Hamburger, ErrorLog,
-    ScreenFull, SizeSelect, HeaderSearch
+    Breadcrumb, Hamburger, ErrorLog, ScreenFull,
+    SizeSelect, HeaderSearch, LangSelect
   },
   computed: {
     ...mapGetters(["sidebar", "avatar", "device"])

@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       activeName: "directly",
-      inputData: "https://github.com/PanJiaChen/vue-element-admin"
+      inputData: "帅比🐏，你真的好帅啊(☆▽☆)"
     }
   },
   methods: {
