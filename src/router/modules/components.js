@@ -23,7 +23,13 @@ const componentsRouter = {
       component: () => import('@/views/components-demo/StickyDemo'),
       name: 'StickyDemo',
       meta: { title: 'Sticky' }
-    }
+    },
+    {
+      path: 'drag-dialog',
+      component: () => import('@/views/components-demo/DragDialogDemo'),
+      name: 'DragDialogDemo',
+      meta: { title: 'Drag Dialog' }
+    },
   ]
 }
 

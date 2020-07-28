@@ -278,7 +278,7 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: 'external-link',
+    path: '/external-link',
     component: Layout,
     children: [
       {

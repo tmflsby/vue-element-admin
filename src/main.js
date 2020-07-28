@@ -7,6 +7,7 @@ import ElementUI from "element-ui";
 import * as filters from "./filters";   // global filters
 import i18n from "./lang";  // internationalization
 import "normalize.css";   // a modern alternative to CSS resets
+import "default-passive-events";
 import "./styles/index.scss";   // global css
 import "./styles/element-variables.scss";
 import "./icons";   // icon
