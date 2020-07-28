@@ -19,7 +19,7 @@ const jaLocale = {
     'Sticky': 'Sticky',
     'Count To': 'Count To',
     'ComponentMixin': 'コンポーネントMixin',
-    'Back To Top': 'BackToTop',
+    'Back To Top': 'トップへ戻る',
     'Drag Dialog': 'Drag Dialog',
     'Drag Select': 'Drag Select',
     'Drag Kanban': 'Drag 看板',

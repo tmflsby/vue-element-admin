@@ -12,6 +12,7 @@ import chartsRouter from "./modules/charts";
 import tableRouter from "./modules/table";
 import excelRouter from "./modules/excel";
 import permissionRouter from "./modules/permission";
+import componentsRouter from "./modules/components";
 
 /**
  * constantRoutes
@@ -239,6 +240,7 @@ export const asyncRoutes = [
       }
     ]
   },
+  componentsRouter,
   permissionRouter,
   nestedRouter,
   chartsRouter,
