@@ -30,6 +30,24 @@ const componentsRouter = {
       name: 'DragDialogDemo',
       meta: { title: 'Drag Dialog' }
     },
+    {
+      path: 'drag-kanban',
+      component: () => import('@/views/components-demo/DragKanbanDemo'),
+      name: 'DragKanbanDemo',
+      meta: { title: 'Drag Kanban' }
+    },
+    {
+      path: 'drag-select',
+      component: () => import('@/views/components-demo/DragSelectDemo'),
+      name: 'DragSelectDemo',
+      meta: { title: 'Drag Select' }
+    },
+    {
+      path: 'dnd-list',
+      component: () => import('@/views/components-demo/DndListDemo'),
+      name: 'DndListDemo',
+      meta: { title: 'Dnd List' }
+    },
   ]
 }
 
