@@ -48,6 +48,24 @@ const componentsRouter = {
       name: 'DndListDemo',
       meta: { title: 'Dnd List' }
     },
+    {
+      path: 'tinymce',
+      component: () => import('@/views/components-demo/TinymceDemo'),
+      name: 'TinymceDemo',
+      meta: { title: 'Tinymce' }
+    },
+    {
+      path: 'json-editor',
+      component: () => import('@/views/components-demo/JsonEditorDemo'),
+      name: 'JsonEditorDemo',
+      meta: { title: 'JSON Editor' }
+    },
+    {
+      path: 'markdown',
+      component: () => import('@/views/components-demo/MarkdownDemo'),
+      name: 'MarkdownDemo',
+      meta: { title: 'Markdown' }
+    },
   ]
 }
 
