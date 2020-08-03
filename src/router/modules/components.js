@@ -66,6 +66,18 @@ const componentsRouter = {
       name: 'MarkdownDemo',
       meta: { title: 'Markdown' }
     },
+    {
+      path: 'split-pane',
+      component: () => import('@/views/components-demo/SplitPaneDemo'),
+      name: 'SplitpaneDemo',
+      meta: { title: 'SplitPane' }
+    },
+    {
+      path: 'dropzone',
+      component: () => import('@/views/components-demo/DropZoneDemo'),
+      name: 'DropZoneDemo',
+      meta: { title: 'Dropzone' }
+    },
   ]
 }
 

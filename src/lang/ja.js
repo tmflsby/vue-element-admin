@@ -103,7 +103,7 @@ const jaLocale = {
   components: {
     'documentation': 'ドキュメント',
     'tinymceTips': 'tinymceは管理画面に重要な機能ですが、その同時に落とし穴がありあす。tinymceを使う道のりが大変でした。Tinymceを使う時に各自のプロジェクト状況で判断が必要です。ドキュメントはこちら',
-    'dropzoneTips': 'Third partyのパッケージを使わず、独自の実装しています。詳細は @/components/Dropzone',
+    'dropzoneTips': 'Third partyのパッケージを使わず、独自の実装しています。詳細は @/components/DropZone',
     'stickyTips': 'ページの指定位置へスクロールした場合、表示されます。',
     'backToTopTips1': 'トップへスクロールが表示されます。',
     'backToTopTips2': 'ボタンのスタイルはカスタマイズできます。例えば、show/hide、height、position。 またはElementのel-tooltipを使って、ツールチップを実装できます。',
