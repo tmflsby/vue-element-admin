@@ -78,6 +78,18 @@ const componentsRouter = {
       name: 'DropZoneDemo',
       meta: { title: 'Dropzone' }
     },
+    {
+      path: 'count-to',
+      component: () => import('@/views/components-demo/CountToDemo'),
+      name: 'CountToDemo',
+      meta: { title: 'Count To' }
+    },
+    {
+      path: 'avatar-upload',
+      component: () => import('@/views/components-demo/AvatarUploadDemo'),
+      name: 'AvatarUploadDemo',
+      meta: { title: 'Avatar Upload' }
+    },
   ]
 }
 
