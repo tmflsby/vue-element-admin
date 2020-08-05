@@ -59,7 +59,7 @@ const esLocale = {
     'PDF': 'PDF',
     'Export Zip': 'Exportar a Zip',
     'Theme': 'Tema',
-    'Clipboard': 'Clipboard',
+    'Clipboard': 'Portapapeles',
     'I18n': 'I18n',
     'External Link': 'Enlace externo',
     'Profile': 'Profile'

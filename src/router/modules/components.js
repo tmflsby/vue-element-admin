@@ -90,6 +90,12 @@ const componentsRouter = {
       name: 'AvatarUploadDemo',
       meta: { title: 'Avatar Upload' }
     },
+    {
+      path: 'mixin',
+      component: () => import('@/views/components-demo/ComponentMixinDemo'),
+      name: 'ComponentMixinDemo',
+      meta: { title: 'ComponentMixin' }
+    }
   ]
 }
 

@@ -59,7 +59,7 @@ const zhLocale = {
     'PDF': 'PDF',
     'Export Zip': 'Export Zip',
     'Theme': '换肤',
-    'Clipboard': 'Clipboard',
+    'Clipboard': '剪贴板',
     'I18n': '国际化',
     'External Link': '外链',
     'Profile': '个人中心'

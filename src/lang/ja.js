@@ -59,7 +59,7 @@ const jaLocale = {
     'PDF': 'PDF',
     'Export Zip': 'Export Zip',
     'Theme': 'テーマ変更',
-    'Clipboard': 'Clipboard',
+    'Clipboard': 'クリップボード',
     'I18n': '多言語',
     'External Link': '外部リンク',
     'Profile': 'プロフィール'
