@@ -79,8 +79,8 @@ const jaLocale = {
     'username': 'ユーザ名',
     'password': 'パスワード',
     'any': 'password',
-    'thirdparty': '外部IDでログイン',
-    'thirdpartyTips': 'ローカル環境ではログインできません。実装が必要です。'
+    'thirdParty': '外部IDでログイン',
+    'thirdPartyTips': 'ローカル環境ではログインできません。実装が必要です。'
   },
   documentation: {
     'documentation': 'ドキュメント',

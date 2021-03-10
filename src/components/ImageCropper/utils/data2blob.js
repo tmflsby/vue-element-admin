@@ -5,7 +5,7 @@
  * @param  {String} mime [description]
  * @return {Blob}      [description]
  */
-export default function(data, mime) {
+const data2blob = (data, mime) => {
   data = data.split(',')[1];
   data = window.atob(data);
   let ia = new Uint8Array(data.length);
@@ -17,3 +17,5 @@ export default function(data, mime) {
     type: mime
   });
 };
+
+export default data2blob;

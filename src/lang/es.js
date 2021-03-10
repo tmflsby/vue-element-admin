@@ -79,8 +79,8 @@ const esLocale = {
     'username': 'Usuario',
     'password': 'Contraseña',
     'any': 'nada',
-    'thirdparty': 'Conectar con',
-    'thirdpartyTips': 'No se puede simular en local, así que combine su propia simulación de negocios. ! !'
+    'thirdParty': 'Conectar con',
+    'thirdPartyTips': 'No se puede simular en local, así que combine su propia simulación de negocios. ! !'
   },
   documentation: {
     'documentation': 'Documentación',

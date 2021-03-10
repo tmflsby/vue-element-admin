@@ -5,7 +5,7 @@
  * @param  {Object} arg_opts [description]
  * @return {Boolean}          [description]
  */
-export default function(e, arg_opts) {
+const effectRipple = (e, arg_opts) => {
   let opts = Object.assign({
     ele: e.target, // 波纹作用元素
     type: 'hit', // hit点击位置扩散center中心点扩展
@@ -37,3 +37,5 @@ export default function(e, arg_opts) {
     return false
   }
 };
+
+export default effectRipple;

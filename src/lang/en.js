@@ -79,8 +79,8 @@ const enLocale = {
     'username': 'Username',
     'password': 'Password',
     'any': 'any',
-    'thirdparty': 'Or connect with',
-    'thirdpartyTips': 'Can not be simulated on local, so please combine you own business simulation! ! !'
+    'thirdParty': 'Or connect with',
+    'thirdPartyTips': 'Can not be simulated on local, so please combine you own business simulation! ! !'
   },
   documentation: {
     'documentation': 'Documentation',

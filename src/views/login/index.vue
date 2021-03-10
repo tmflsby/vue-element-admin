@@ -1,6 +1,13 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" ref="loginForm" :model="loginForm" :rules="loginRules" autocomplete="on" label-position="left">
+    <el-form
+      class="login-form"
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      autocomplete="on"
+      label-position="left"
+    >
 
       <div class="title-container">
         <h3 class="title">{{ $t('login.title') }}</h3>
@@ -11,19 +18,39 @@
         <span class="svg-container">
           <SvgIcon icon-class="user"/>
         </span>
-        <el-input ref="username" v-model="loginForm.username" :placeholder="$t('login.username')"
-                  name="username" type="text" tabindex="1" autocomplete="on"
+        <el-input
+          ref="username"
+          v-model="loginForm.username"
+          :placeholder="$t('login.username')"
+          name="username"
+          type="text"
+          tabindex="1"
+          autocomplete="on"
         />
       </el-form-item>
 
-      <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
+      <el-tooltip
+        v-model="capsTooltip"
+        content="Caps lock is On"
+        placement="right"
+        manual
+      >
         <el-form-item prop="password">
           <span class="svg-container">
             <SvgIcon icon-class="password"/>
           </span>
-          <el-input ref="password" v-model="loginForm.password" :key="passwordType" :type="passwordType"
-                    :placeholder="$t('login.password')" name="password" tabindex="2" autocomplete="on"
-                    @keyup.native="checkCapslock" @blur="capsTooltip = false" @keyup.enter.native="handleLogin"
+          <el-input
+              ref="password"
+              v-model="loginForm.password"
+              :key="passwordType"
+              :type="passwordType"
+              :placeholder="$t('login.password')"
+              name="password"
+              tabindex="2"
+              autocomplete="on"
+              @keyup.native="checkCapslock"
+              @blur="capsTooltip=false"
+              @keyup.enter.native="handleLogin"
           />
           <span class="show-pwd" @click="showPwd">
             <SvgIcon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"/>
@@ -31,28 +58,40 @@
         </el-form-item>
       </el-tooltip>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">
+      <el-button
+        class="login-btn"
+        :loading="loading"
+        type="primary"
+        @click.native.prevent="handleLogin"
+      >
         {{ $t('login.logIn') }}
       </el-button>
 
-      <div style="position: relative">
+      <div class="login-tips">
         <div class="tips">
           <span>{{ $t('login.username') }} : admin</span>
           <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
         </div>
         <div class="tips">
-          <span style="margin-right:18px;">{{ $t('login.username') }} : editor</span>
+          <span>{{ $t('login.username') }} : editor</span>
           <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
         </div>
 
-        <el-button class="thirdparty-button" type="primary" @click="showDialog = true">
-          {{ $t('login.thirdparty') }}
+        <el-button
+          class="third-party-button"
+          type="primary"
+          @click="showDialog=true"
+        >
+          {{ $t('login.thirdParty') }}
         </el-button>
       </div>
     </el-form>
 
-    <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog">
-      {{ $t('login.thirdpartyTips') }}
+    <el-dialog
+      :title="$t('login.thirdParty')"
+      :visible.sync="showDialog"
+    >
+      {{ $t('login.thirdPartyTips') }}
       <br>
       <br>
       <br>
@@ -237,14 +276,22 @@ $light_gray:#eee;
     overflow: hidden;
   }
 
-  .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
+  .login-tips {
+    position: relative;
+    .tips {
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 10px;
 
-    span {
-      &:first-of-type {
-        margin-right: 16px;
+      &:first-of-type span {
+        &:first-of-type {
+          margin-right: 16px;
+        }
+      }
+      &:last-of-type span {
+        &:first-of-type {
+          margin-right: 18px;
+        }
       }
     }
   }
@@ -288,7 +335,12 @@ $light_gray:#eee;
     user-select: none;
   }
 
-  .thirdparty-button {
+  .login-btn {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .third-party-button {
     position: absolute;
     right: 0;
     bottom: 6px;
