@@ -71,8 +71,7 @@ export const validEmail = (email) => {
  * @returns {Boolean}
  */
 export const isString = (str) => {
-  return typeof str === 'string' || str instanceof String;
-
+  return typeof str === 'string' || str instanceof String
 };
 
 

@@ -20,7 +20,7 @@ const checkNeed = () => {
 
 if (checkNeed()) {
   // eslint-disable-next-line no-unused-vars
-  Vue.config.errorHandler = (err, vm, info, a) => {
+  Vue.config.errorHandler = (err, vm, info) => {
   // Don't ask me why I use Vue.nextTick, it just a hack.
   // detail see https://forum.vuejs.org/t/dispatch-in-vue-config-errorhandler-has-some-problem/23500
     Vue.nextTick(() => {
