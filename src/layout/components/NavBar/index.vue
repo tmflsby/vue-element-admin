@@ -1,6 +1,11 @@
 <template>
   <div class="navbar">
-    <Hamburger :is-active="sidebar.opened" @toggleClick="toggleSideBar" id="hamburger-container" class="hamburger-container" />
+    <Hamburger
+      id="hamburger-container"
+      class="hamburger-container"
+      :is-active="sidebar.opened"
+      @toggleClick="toggleSideBar"
+    />
 
     <Breadcrumb id="breadcrumb-container" class="breadcrumb-container"/>
 
@@ -21,7 +26,7 @@
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" alt="" class="user-avatar">
+          <img class="user-avatar" :src="avatar + '?imageView2/1/w/80/h/80'" alt="">
           <i class="el-icon-caret-bottom"/>
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -85,6 +90,7 @@ export default {
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {
+    padding: 0 15px;
     line-height: 46px;
     height: 100%;
     float: left;

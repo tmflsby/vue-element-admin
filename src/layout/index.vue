@@ -1,8 +1,12 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
-    <div v-if="device === 'mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
+  <div class="app-wrapper" :class="classObj">
+    <div
+      class="drawer-bg"
+      v-if="device === 'mobile' && sidebar.opened"
+      @click="handleClickOutside"
+    />
     <Sidebar class="sidebar-container"/>
-    <div :class="{ hasTagsView: needTagsView }" class="main-container">
+    <div class="main-container" :class="{ hasTagsView: needTagsView }">
       <div :class="{ 'fixed-header': fixedHeader }">
         <NavBar/>
         <TagsView v-if="needTagsView"/>
