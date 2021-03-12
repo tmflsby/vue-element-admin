@@ -273,7 +273,7 @@ export default {
     width: 40px;
     position: absolute;
     right: 10px;
-    top: 0px;
+    top: 0;
   }
 }
 
@@ -282,7 +282,7 @@ export default {
     padding-right: 40px;
     resize: none;
     border: none;
-    border-radius: 0px;
+    border-radius: 0;
     border-bottom: 1px solid #bfcbd9;
   }
 }

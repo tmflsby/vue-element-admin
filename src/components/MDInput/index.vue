@@ -144,7 +144,7 @@ $apixel: 1px;
 // Utils
 $spacer: 12px;
 $transition: 0.2s ease all;
-$index: 0px;
+$index: 0;
 $index-has-icon: 30px;
 // Theme:
 $color-white: white;

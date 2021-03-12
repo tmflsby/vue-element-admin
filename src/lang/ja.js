@@ -173,7 +173,8 @@ const jaLocale = {
     'theme': 'テーマ色',
     'tagsView': 'Tags-View 開く',
     'fixedHeader': 'Fixed Header',
-    'sidebarLogo': 'Sidebar Logo'
+    'sidebarLogo': 'Sidebar Logo',
+    'pinyinSearch': 'ピンインサーチ'
   }
 };
 

@@ -45,7 +45,7 @@ export default {
 .dashboard-editor-container {
   background-color: #e3e3e3;
   min-height: 100vh;
-  padding: 50px 60px 0px;
+  padding: 50px 60px 0;
   .pan-info-roles {
     font-size: 12px;
     font-weight: 700;

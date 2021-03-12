@@ -1,30 +1,57 @@
 <template>
   <div id="tags-view-container" class="tags-view-container">
-    <ScrollPane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
-      <router-link class="tags-view-item" tag="span" ref="tag"
-                   v-for="tag in visitedViews" :key="tag.path"
-                   :class="isActive(tag) ? 'active' : ''"
-                   :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
-                   @click.middle.native="!isAffix(tag) ? closeSelectedTag(tag) : ''"
-                   @contextmenu.prevent.native="openMenu(tag,$event)"
+    <ScrollPane
+      class="tags-view-wrapper"
+      ref="scrollPane"
+      @scroll="handleScroll"
+    >
+      <router-link
+        class="tags-view-item"
+        tag="span"
+        ref="tag"
+        v-for="tag in visitedViews"
+        :key="tag.path"
+        :class="isActive(tag) ? 'active' : ''"
+        :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
+        @click.middle.native="!isAffix(tag) ? closeSelectedTag(tag) : ''"
+        @contextmenu.prevent.native="openMenu(tag,$event)"
       >
         {{ generateTitle(tag.title) }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"/>
+        <span
+          class="el-icon-close"
+          v-if="!isAffix(tag)"
+          @click.prevent.stop="closeSelectedTag(tag)"
+        />
       </router-link>
     </ScrollPane>
-    <ul v-show="visible" :style="{ left: left + 'px',top: top + 'px' }" class="contextmenu">
-      <li @click="refreshSelectedTag(selectedTag)">{{ $t('tagsView.refresh') }}</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">{{ $t('tagsView.close') }}</li>
-      <li @click="closeOthersTags">{{ $t('tagsView.closeOthers') }}</li>
-      <li @click="closeAllTags(selectedTag)">{{ $t('tagsView.closeAll') }}</li>
+    <ul
+      class="contextmenu"
+      v-show="visible"
+      :style="{ left: left + 'px',top: top + 'px' }"
+    >
+      <li @click="refreshSelectedTag(selectedTag)">
+        {{ $t('tagsView.refresh') }}
+      </li>
+      <li
+        v-if="!isAffix(selectedTag)"
+        @click="closeSelectedTag(selectedTag)"
+      >
+        {{ $t('tagsView.close') }}
+      </li>
+      <li @click="closeOthersTags">
+        {{ $t('tagsView.closeOthers') }}
+      </li>
+      <li @click="closeAllTags(selectedTag)">
+        {{ $t('tagsView.closeAll') }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
+import path from "path";
 import ScrollPane from "./ScrollPane";
 import { generateTitle } from "@/utils/i18n";
-import path from "path";
 export default {
   name: "TagsView",
   components: { ScrollPane },

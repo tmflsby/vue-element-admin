@@ -10,17 +10,22 @@
 
       <div class="drawer-item">
         <span>{{ $t('settings.tagsView') }}</span>
-        <el-switch v-model="tagsView" class="drawer-switch"/>
+        <el-switch class="drawer-switch" v-model="tagsView"/>
       </div>
 
       <div class="drawer-item">
         <span>{{ $t('settings.fixedHeader') }}</span>
-        <el-switch v-model="fixedHeader" class="drawer-switch" />
+        <el-switch class="drawer-switch" v-model="fixedHeader"/>
       </div>
 
       <div class="drawer-item">
         <span>{{ $t('settings.sidebarLogo') }}</span>
-        <el-switch v-model="sidebarLogo" class="drawer-switch" />
+        <el-switch class="drawer-switch" v-model="sidebarLogo"/>
+      </div>
+
+      <div class="drawer-item" v-if="lang==='zh'">
+        <span>{{ $t('settings.pinyinSearch') }}</span>
+        <el-switch class="drawer-switch" v-model="supportPinyinSearch"/>
       </div>
     </div>
   </div>
@@ -64,6 +69,20 @@ export default {
           value: val
         });
       }
+    },
+    supportPinyinSearch: {
+      get() {
+        return this.$store.state.settings.supportPinyinSearch
+      },
+      set(val) {
+        this.$store.dispatch("settings/changeSetting", {
+          key: "supportPinyinSearch",
+          value: val
+        })
+      }
+    },
+    lang() {
+      return this.$store.getters.language
     }
   },
   methods: {

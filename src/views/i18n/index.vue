@@ -161,7 +161,7 @@ export default {
 }
 .item-btn{
   margin-bottom: 15px;
-  margin-left: 0px;
+  margin-left: 0;
 }
 .block {
   padding: 25px;

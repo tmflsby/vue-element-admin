@@ -1,7 +1,6 @@
 <script>
 export default {
   name: "Redirect",
-  functional: true,
   created() {
     const { params, query } = this.$route;
     const { path } = params;
