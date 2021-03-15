@@ -1,10 +1,13 @@
 <template>
-  <div :class="className" :style="{ height: height, width: width }"></div>
+  <div
+    :class="className"
+    :style="{ height: height, width: width }"
+  />
 </template>
 
 <script>
 import echarts from "echarts";
-require("echarts/theme/macarons");
+import "echarts/theme/macarons"; // echarts theme
 import resize from "./mixin/resize";
 
 const animationDuration = 6000;

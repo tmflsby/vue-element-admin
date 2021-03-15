@@ -12,7 +12,7 @@ export default {
       if (this.chart) {
         this.chart.resize();
       }
-    }, 100);
+    }, 100, true);
     this.$_initResizeEvent();
     this.$_initSidebarResizeEvent();
   },

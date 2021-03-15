@@ -3,16 +3,24 @@
     <div class="clearfix">
       <PanThumb :image="avatar" style="float: left;">
         Your roles:
-        <span v-for="item in roles" :key="item" class="pan-info-roles">{{ item }}</span>
+        <span
+          class="pan-info-roles"
+          v-for="item in roles"
+          :key="item"
+        >
+          {{ item }}
+        </span>
       </PanThumb>
-      <GithubCorner style="position: absolute; top: 0; border: 0; right: 0;"/>
+      <GithubCorner class="github-corner"/>
       <div class="info-container">
         <span class="display_name">{{ name }}</span>
-        <span style="font-size:20px;padding-top:20px;display:inline-block;">Editor's Dashboard</span>
+        <span style="font-size:20px;padding-top:20px;display:inline-block;">
+          Editor's Dashboard
+        </span>
       </div>
     </div>
     <div>
-      <img :src="emptyGif" class="emptyGif" alt="">
+      <img class="emptyGif" :src="emptyGif" alt="">
     </div>
   </div>
 </template>
@@ -44,8 +52,14 @@ export default {
 
 .dashboard-editor-container {
   background-color: #e3e3e3;
-  min-height: 100vh;
+  min-height: calc(100vh - 85px);
   padding: 50px 60px 0;
+  .github-corner {
+    position: absolute;
+    top: 0;
+    border: 0;
+    right: 0;
+  }
   .pan-info-roles {
     font-size: 12px;
     font-weight: 700;

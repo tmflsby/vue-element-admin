@@ -1,11 +1,17 @@
 <template>
-  <div :style="{ zIndex: zIndex, height: height, width: width }" class="pan-item">
+  <div
+    class="pan-item"
+    :style="{ zIndex, height, width }"
+  >
     <div class="pan-info">
       <div class="pan-info-roles-container">
         <slot/>
       </div>
     </div>
-    <div :style="{ backgroundImage: `url(${image})` }" class="pan-thumb"></div>
+    <div
+      class="pan-thumb"
+      :style="{ backgroundImage: `url(${image})` }"
+    />
   </div>
 </template>
 
@@ -107,7 +113,6 @@ export default {
 
 .pan-info p a {
   display: block;
-  color: #333;
   width: 80px;
   height: 80px;
   background: rgba(255, 255, 255, 0.3);

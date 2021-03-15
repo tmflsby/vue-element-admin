@@ -34,7 +34,7 @@ Vue.use(ElementUI, {
 
 // register global utility filters
 Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
+  Vue.filter(key, filters[key]);
 });
 
 Vue.config.productionTip = false;

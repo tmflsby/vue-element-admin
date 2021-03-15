@@ -1,46 +1,66 @@
 <template>
-  <el-row :gutter="40" class="panel-group">
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+  <el-row class="panel-group" :gutter="40">
+    <el-col class="card-panel-col" :xs="12" :sm="12" :lg="6">
+      <div class="card-panel" @click="handleSetLineChartData('newVisits')">
         <div class="card-panel-icon-wrapper icon-people">
-          <SvgIcon icon-class="people" class-name="card-panel-icon"/>
+          <SvgIcon class-name="card-panel-icon" icon-class="people"/>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">New Visits</div>
-          <CountTo :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num"/>
+          <CountTo
+            class="card-panel-num"
+            :start-val="0"
+            :end-val="102400"
+            :duration="2600"
+          />
         </div>
       </div>
     </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    <el-col class="card-panel-col" :xs="12" :sm="12" :lg="6">
       <div class="card-panel" @click="handleSetLineChartData('messages')">
         <div class="card-panel-icon-wrapper icon-message">
-          <SvgIcon icon-class="message" class-name="card-panel-icon"/>
+          <SvgIcon class-name="card-panel-icon" icon-class="message"/>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">Messages</div>
-          <CountTo :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num"/>
+          <CountTo
+            class="card-panel-num"
+            :start-val="0"
+            :end-val="81212"
+            :duration="3000"
+          />
         </div>
       </div>
     </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    <el-col class="card-panel-col" :xs="12" :sm="12" :lg="6">
       <div class="card-panel" @click="handleSetLineChartData('purchases')">
         <div class="card-panel-icon-wrapper icon-money">
-          <SvgIcon icon-class="money" class-name="card-panel-icon" />
+          <SvgIcon class-name="card-panel-icon" icon-class="money"/>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">Purchases</div>
-          <CountTo :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
+          <CountTo
+            class="card-panel-num"
+            :start-val="0"
+            :end-val="9280"
+            :duration="3200"
+          />
         </div>
       </div>
     </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+    <el-col class="card-panel-col" :xs="12" :sm="12" :lg="6">
       <div class="card-panel" @click="handleSetLineChartData('shoppings')">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <SvgIcon icon-class="shopping" class-name="card-panel-icon" />
+          <SvgIcon class-name="card-panel-icon" icon-class="shopping"/>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">Shoppings</div>
-          <CountTo :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
+          <CountTo
+            class="card-panel-num"
+            :start-val="0"
+            :end-val="13600"
+            :duration="3600"
+          />
         </div>
       </div>
     </el-col>

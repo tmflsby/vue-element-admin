@@ -2,17 +2,35 @@
   <section class="todoapp">
     <!-- header -->
     <header class="header">
-      <label>
-        <input @keyup.enter="addTodo" type="text" class="new-todo" autocomplete="off" placeholder="Todo List">
+      <label for="new-todo">
+        <input
+          id="new-todo"
+          class="new-todo"
+          type="text"
+          autocomplete="off"
+          placeholder="Todo List"
+          @keyup.enter="addTodo"
+        >
       </label>
     </header>
     <!-- main section -->
     <section v-show="todos.length" class="main">
-      <input id="toggle-all" :checked="allChecked" class="toggle-all" type="checkbox" @change="toggleAll({ done: !allChecked })">
+      <input
+        id="toggle-all"
+        class="toggle-all"
+        type="checkbox"
+        :checked="allChecked"
+        @change="toggleAll({ done: !allChecked })"
+      >
       <label for="toggle-all"/>
       <ul class="todo-list">
-        <Todo v-for="(todo, index) in filteredTodos" :key="index" :todo="todo"
-              @toggleTodo="toggleTodo" @editTodo="editTodo" @deleteTodo="deleteTodo"
+        <Todo
+          v-for="(todo, index) in filteredTodos"
+          :key="index"
+          :todo="todo"
+          @toggleTodo="toggleTodo"
+          @editTodo="editTodo"
+          @deleteTodo="deleteTodo"
         />
       </ul>
     </section>
@@ -24,9 +42,12 @@
       </span>
       <ul class="filters">
         <li v-for="(val, key) in filters" :key="key">
-          <a :class="{ selected: visibility === key }" @click.prevent="visibility = key" href="">
+          <span
+            :class="{ selected: visibility === key }"
+            @click.prevent="visibility = key"
+          >
             {{ key | capitalize }}
-          </a>
+          </span>
         </li>
       </ul>
       <!-- <button class="clear-completed" v-show="todos.length > remaining" @click="clearCompleted">

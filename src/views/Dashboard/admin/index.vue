@@ -4,37 +4,58 @@
 
     <PanelGroup @handleSetLineChartData="handleSetLineChartData"/>
 
-    <el-row style="background: #fff;padding: 16px 16px 0;margin-bottom: 32px;">
+    <el-row class="chart-wrapper">
       <LineChart :chart-data="lineChartData"/>
     </el-row>
 
     <el-row :gutter="32">
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
-          <RaddarChart />
+          <RadarChart/>
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
-          <PieChart />
+          <PieChart/>
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
-          <BarChart />
+          <BarChart/>
         </div>
       </el-col>
     </el-row>
 
     <el-row :gutter="8">
-      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
-        <TransactionTable />
+      <el-col
+        :xs="{span: 24}"
+        :sm="{span: 24}"
+        :md="{span: 24}"
+        :lg="{span: 12}"
+        :xl="{span: 12}"
+        style="padding-right:8px;margin-bottom:30px;"
+      >
+        <TransactionTable/>
       </el-col>
-      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
-        <TodoList />
+      <el-col
+        :xs="{span: 24}"
+        :sm="{span: 12}"
+        :md="{span: 12}"
+        :lg="{span: 6}"
+        :xl="{span: 6}"
+        style="margin-bottom:30px;"
+      >
+        <TodoList/>
       </el-col>
-      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
-        <BoxCard />
+      <el-col
+        :xs="{span: 24}"
+        :sm="{span: 12}"
+        :md="{span: 12}"
+        :lg="{span: 6}"
+        :xl="{span: 6}"
+        style="margin-bottom:30px;"
+      >
+        <BoxCard/>
       </el-col>
     </el-row>
   </div>
@@ -44,7 +65,7 @@
 import GithubCorner from "@/components/GithubCorner";
 import PanelGroup from "./components/PanelGroup";
 import LineChart from "./components/LineChart";
-import RaddarChart from "./components/RaddarChart";
+import RadarChart from "./components/RadarChart";
 import PieChart from "./components/PieChart";
 import BarChart from "./components/BarChart";
 import TransactionTable from "./components/TransactionTable";
@@ -52,7 +73,7 @@ import TodoList from "./components/TodoList";
 import BoxCard from "./components/BoxCard";
 
 const lineChartData = {
-  newVisitis: {
+  newVisits: {
     expectedData: [100, 120, 161, 134, 105, 160, 165],
     actualData: [120, 82, 91, 154, 162, 140, 145]
   },
@@ -73,12 +94,12 @@ const lineChartData = {
 export default {
   name: "Admin",
   components: {
-    GithubCorner, PanelGroup, LineChart, RaddarChart, PieChart,
+    GithubCorner, PanelGroup, LineChart, RadarChart, PieChart,
     BarChart, TransactionTable, TodoList, BoxCard
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData: lineChartData.newVisits
     }
   },
   methods: {

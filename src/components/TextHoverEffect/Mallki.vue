@@ -1,5 +1,5 @@
 <template>
-  <a :class="className" href="#" class="link-mallki">
+  <a class="link--mallki" :class="className" href="#">
     {{ text }}
     <span :data-letters="text"/>
     <span :data-letters="text"/>
@@ -78,7 +78,6 @@ export default {
 
 .link--mallki span::before {
   content: attr(data-letters);
-  color: red;
   position: absolute;
   left: 0;
   width: 100%;
