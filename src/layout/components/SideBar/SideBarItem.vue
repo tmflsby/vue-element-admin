@@ -1,20 +1,44 @@
 <template>
   <div v-if="!item.hidden">
-    <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
-      <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
-          <Item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="generateTitle(onlyOneChild.meta.title)"/>
+    <template
+      v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow"
+    >
+      <AppLink
+        v-if="onlyOneChild.meta"
+        :to="resolvePath(onlyOneChild.path)"
+      >
+        <el-menu-item
+          :class="{ 'submenu-title-noDropdown': !isNest }"
+          :index="resolvePath(onlyOneChild.path)"
+        >
+          <Item
+            :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
+            :title="generateTitle(onlyOneChild.meta.title)"
+          />
         </el-menu-item>
       </AppLink>
     </template>
 
-    <el-submenu v-else ref="subMenu" popper-append-to-body :index="resolvePath(item.path)">
+    <el-submenu
+      v-else ref="subMenu"
+      popper-append-to-body
+      :index="resolvePath(item.path)"
+    >
       <template slot="title">
-        <Item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="generateTitle(item.meta.title)"/>
+        <Item
+          v-if="item.meta"
+          :icon="item.meta && item.meta.icon"
+          :title="generateTitle(item.meta.title)"
+        />
       </template>
 
-      <SideBarItem v-for="child in item.children" :key="child.path" :is-nest="true"
-                   :item="child" :base-path="resolvePath(child.path)" class="nest-menu"
+      <SideBarItem
+        class="nest-menu"
+        v-for="child in item.children"
+        :key="child.path"
+        :is-nest="true"
+        :item="child"
+        :base-path="resolvePath(child.path)"
       />
     </el-submenu>
   </div>
@@ -49,8 +73,9 @@ export default {
   data() {
     // To fix https://github.com/PanJiaChen/vue-admin-template/issues/237
     // TODO: refactor with render function
-    this.onlyOneChild = null;
-    return {}
+    return {
+      onlyOneChild: null
+    }
   },
   methods: {
     generateTitle,

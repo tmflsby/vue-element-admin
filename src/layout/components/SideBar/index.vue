@@ -2,11 +2,22 @@
   <div :class="{ 'has-log': showLogo }">
     <Logo v-if="showLogo" :collapse="isCollapse"/>
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu :default-active="activeMenu" :collapse="isCollapse" :background-color="variables.menuBg"
-               :text-color="variables.menuText" :unique-opened="false" :collapse-transition="false"
-               :active-text-color="variables.menuActiveText" mode="vertical"
+      <el-menu
+        :default-active="activeMenu"
+        :collapse="isCollapse"
+        :background-color="variables.menuBg"
+        :text-color="variables.menuText"
+        :unique-opened="false"
+        :collapse-transition="false"
+        :active-text-color="variables.menuActiveText"
+        mode="vertical"
       >
-        <SideBarItem v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path"/>
+        <SideBarItem
+          v-for="route in permission_routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>
