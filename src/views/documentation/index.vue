@@ -1,10 +1,38 @@
 <template>
   <div class="app-container documentation-container">
-    <a class="document-btn" target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/">{{ $t('documentation.documentation') }}</a>
-    <a class="document-btn" target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">{{ $t('documentation.github') }}</a>
-    <a class="document-btn" target="_blank" href="https://panjiachen.gitee.io/vue-element-admin-site/zh/">国内文档</a>
-    <DropdownMenu class="document-btn" :items="articleList" title="系列文章"/>
-    <a class="document-btn" target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/zh/job/">内推招聘</a>
+    <a
+      class="document-btn"
+      target="_blank"
+      href="https://panjiachen.github.io/vue-element-admin-site/"
+    >
+      {{ $t('documentation.documentation') }}
+    </a>
+    <a
+      class="document-btn"
+      target="_blank"
+      href="https://github.com/PanJiaChen/vue-element-admin/"
+    >
+      {{ $t('documentation.github') }}
+    </a>
+    <a
+      class="document-btn"
+      target="_blank"
+      href="https://panjiachen.gitee.io/vue-element-admin-site/zh/"
+    >
+      国内文档
+    </a>
+    <DropdownMenu
+      class="document-btn"
+      title="系列文章"
+      :items="articleList"
+    />
+    <a
+      class="document-btn"
+      target="_blank"
+      href="https://panjiachen.github.io/vue-element-admin-site/zh/job/"
+    >
+      内推招聘
+    </a>
   </div>
 </template>
 
