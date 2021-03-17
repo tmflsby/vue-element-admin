@@ -2,6 +2,7 @@ import saveAs from "file-saver";
 import JSZip from "jszip";
 
 export const export_txt_to_zip = (th, jsonData, txtName, zipName) => {
+  console.log(th, jsonData,txtName,zipName)
   const zip = new JSZip();
   const txt_name = txtName || "file";
   const zip_name = zipName || "file";
@@ -9,8 +10,7 @@ export const export_txt_to_zip = (th, jsonData, txtName, zipName) => {
   let txtData = `${th}\r\n`;
 
   data.forEach((row) => {
-    let tempStr = "";
-    tempStr = row.toString();
+    let tempStr = row.toString();
     txtData += `${tempStr}\r\n`;
   });
 

@@ -1,11 +1,28 @@
 <template>
   <div class="tab-container">
     <el-tag>mounted times : {{ createdTimes }}</el-tag>
-    <el-alert title="Tab with keep-alive" type="success" :closable="false" style="width:200px;display:inline-block;vertical-align: middle;margin-left:30px;"/>
-    <el-tabs v-model="activeName" type="border-card" style="margin-top:15px;">
-       <el-tab-pane v-for="item in tabMapOptions" :key="item.key" :label="item.label" :name="item.key">
+    <el-alert
+      title="Tab with keep-alive"
+      type="success"
+      :closable="false"
+    />
+    <el-tabs
+      v-model="activeName"
+      type="border-card"
+      style="margin-top:15px;"
+    >
+       <el-tab-pane
+         v-for="item in tabMapOptions"
+         :key="item.key"
+         :label="item.label"
+         :name="item.key"
+       >
          <keep-alive>
-           <TabPane v-if="activeName === item.key" :type="item.key" @create="showCreatedTimes"/>
+           <TabPane
+             v-if="activeName === item.key"
+             :type="item.key"
+             @create="showCreatedTimes"
+           />
          </keep-alive>
        </el-tab-pane>
     </el-tabs>
@@ -53,5 +70,11 @@ export default {
 <style lang="scss" scoped>
 .tab-container {
   margin: 30px;
+  .el-alert {
+    width:200px;
+    display:inline-block;
+    vertical-align: middle;
+    margin-left:30px;
+  }
 }
 </style>

@@ -1,10 +1,28 @@
 <template>
   <div class="app-container">
-    <el-input v-model="filename" :placeholder="$t('zip.placeholder')" style="width:300px;" prefix-icon="el-icon-document"/>
-    <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="el-icon-document" @click="handleDownload">
+    <el-input
+      style="width:300px;"
+      v-model="filename"
+      :placeholder="$t('zip.placeholder')"
+      prefix-icon="el-icon-document"
+    />
+    <el-button
+      style="margin-bottom:20px;"
+      type="primary"
+      icon="el-icon-document"
+      :loading="downloadLoading"
+      @click="handleDownload"
+    >
       {{ $t('zip.export') }} Zip
     </el-button>
-    <el-table v-loading="listLoading" :data="list" element-loading-text="拼命加载中" border fit highlight-current-row>
+    <el-table
+      v-loading="listLoading"
+      :data="list"
+      element-loading-text="拼命加载中"
+      border
+      fit
+      highlight-current-row
+    >
       <el-table-column align="center" label="ID" width="95">
         <template slot-scope="scope">
           {{ scope.$index }}
