@@ -20,7 +20,7 @@ const chartsRouter = {
     },
     {
       path: 'line',
-      component: () => import('@/views/charts/Line'),
+      component: () => import('@/views/charts/LineMarker'),
       name: 'Line',
       meta: { title: 'Line Chart', noCache: true }
     },

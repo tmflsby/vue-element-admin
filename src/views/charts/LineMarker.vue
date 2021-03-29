@@ -7,7 +7,7 @@
 <script>
 import Chart from "@/components/Charts/LineMarker";
 export default {
-  name: "Line",
+  name: "LineMarker",
   components: { Chart }
 }
 </script>

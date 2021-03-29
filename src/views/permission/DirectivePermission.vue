@@ -4,32 +4,32 @@
 
     <div :key="key" style="margin-top:30px;">
       <div>
-        <span v-permission="['admin']" class="permission-alert">
+        <span class="permission-alert" v-permission="['admin']">
           Only
           <el-tag class="permission-tag" size="small">admin</el-tag> can see this
         </span>
-        <el-tag v-permission="['admin']" class="permission-sourceCode" type="info">
+        <el-tag class="permission-sourceCode" type="info" v-permission="['admin']">
           v-permission="['admin']"
         </el-tag>
       </div>
 
       <div>
-        <span v-permission="['editor']" class="permission-alert">
+        <span class="permission-alert" v-permission="['editor']">
           Only
           <el-tag class="permission-tag" size="small">editor</el-tag> can see this
         </span>
-        <el-tag v-permission="['editor']" class="permission-sourceCode" type="info">
+        <el-tag class="permission-sourceCode" type="info" v-permission="['editor']">
           v-permission="['editor']"
         </el-tag>
       </div>
 
       <div>
-        <span v-permission="['admin','editor']" class="permission-alert">
+        <span class="permission-alert" v-permission="['admin','editor']">
           Both
           <el-tag class="permission-tag" size="small">admin</el-tag> and
           <el-tag class="permission-tag" size="small">editor</el-tag> can see this
         </span>
-        <el-tag v-permission="['admin','editor']" class="permission-sourceCode" type="info">
+        <el-tag class="permission-sourceCode" type="info" v-permission="['admin','editor']">
           v-permission="['admin','editor']"
         </el-tag>
       </div>
@@ -69,8 +69,8 @@
 
 <script>
 import permission from "@/directive/permission";
-import checkPermission from "@/utils/permission";
 import SwitchRoles from "./components/SwitchRoles";
+import checkPermission from "@/utils/permission";
 export default {
   name: "DirectivePermission",
   components: { SwitchRoles },
