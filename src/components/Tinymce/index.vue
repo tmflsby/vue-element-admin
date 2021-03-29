@@ -1,10 +1,18 @@
 <template>
-  <div :class="{fullscreen:fullscreen}" class="tinymce-container" :style="{width:containerWidth}">
+  <div
+    class="tinymce-container"
+    :class="{fullscreen:fullscreen}"
+    :style="{width:containerWidth}"
+  >
     <label>
-      <textarea :id="tinymceId" class="tinymce-textarea"/>
+      <textarea class="tinymce-textarea" :id="tinymceId"/>
     </label>
     <div class="editor-custom-btn-container">
-      <editorImage color="#1890ff" class="editor-upload-btn" @successCBK="imageSuccessCBK"/>
+      <editorImage
+        class="editor-upload-btn"
+        color="#1890ff"
+        @successCBK="imageSuccessCBK"
+      />
     </div>
   </div>
 </template>

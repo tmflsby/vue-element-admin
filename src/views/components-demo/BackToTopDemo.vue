@@ -114,7 +114,12 @@
       <div>placeholder</div>
     </div>
     <el-tooltip placement="top" :content="$t(`route.${'Back To Top'}`)">
-      <BackToTop :custom-style="myBackToTopStyle" :visibility-height="300" :back-position="50" transition-name="fade"/>
+      <BackToTop
+        :custom-style="myBackToTopStyle"
+        :visibility-height="300"
+        :back-position="50"
+        transition-name="fade"
+      />
     </el-tooltip>
   </div>
 </template>

@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import ElementUI from "element-ui";
 import * as filters from "./filters";   // global filters
 import i18n from "./lang";  // internationalization
-import 'default-passive-events';
 import "./icons";   // icon
 import "./permission";   // permission control
 import "./utils/error-log";   // error log

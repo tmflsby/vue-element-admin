@@ -1,8 +1,8 @@
 <template>
   <div class="components-container board">
-    <DragKanban :key="1" :list="list1" :group="group" class="kanban todo" header-text="Todo"/>
-    <DragKanban :key="2" :list="list2" :group="group" class="kanban working" header-text="Working"/>
-    <DragKanban :key="3" :list="list3" :group="group" class="kanban done" header-text="Done"/>
+    <DragKanban class="kanban todo" :key="1" :list="list1" :group="group" header-text="Todo"/>
+    <DragKanban class="kanban working" :key="2" :list="list2" :group="group" header-text="Working"/>
+    <DragKanban class="kanban done" :key="3" :list="list3" :group="group" header-text="Done"/>
   </div>
 </template>
 

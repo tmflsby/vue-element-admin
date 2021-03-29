@@ -5,13 +5,18 @@
       {{ $t('components.dropzoneTips') }}
     </aside>
     <div class="editor-container">
-      <DropZone id="myVueDropzone" url="https://httpbin.org/post" @dropzone-removedFile="dropzoneR" @dropzone-success="dropzoneS"/>
+      <DropZone
+        id="myVueDropzone"
+        url="https://httpbin.org/post"
+        @dropzone-removedFile="dropzoneR"
+        @dropzone-success="dropzoneS"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import DropZone from "../../components/DropZone";
+import DropZone from "@/components/DropZone";
 export default {
   name: "DropZoneDemo",
   components: { DropZone },

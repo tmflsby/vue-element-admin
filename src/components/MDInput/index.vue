@@ -1,42 +1,123 @@
 <template>
-  <div :class="computedClasses" class="material-input__component">
+  <div
+    class="material-input__component"
+    :class="computedClasses"
+  >
     <div :class="{iconClass:icon}">
-      <i v-if="icon" :class="['el-icon-' + icon]" class="el-input__icon material-input__icon"/>
+      <i
+        class="el-input__icon material-input__icon"
+        :class="['el-icon-' + icon]"
+        v-if="icon"
+      />
       <label>
-        <input v-if="type === 'email'" v-model="currentValue" :name="name" :placeholder="fillPlaceHolder"
-               :readonly="readonly" :disabled="disabled" :autocomplete="autoComplete" :required="required"
-               type="email" class="material-input" @focus="handleMdFocus" @blur="handleMdBlur" @input="handleModelInput"
+        <input
+          class="material-input"
+          type="email"
+          v-if="type === 'email'"
+          v-model="currentValue"
+          :name="name"
+          :placeholder="fillPlaceHolder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :autocomplete="autoComplete"
+          :required="required"
+          @focus="handleMdFocus"
+          @blur="handleMdBlur"
+          @input="handleModelInput"
         >
       </label>
       <label>
-        <input v-if="type === 'url'" v-model="currentValue" :name="name" :placeholder="fillPlaceHolder"
-               :readonly="readonly" :disabled="disabled" :autocomplete="autoComplete" :required="required"
-               type="url" class="material-input" @focus="handleMdFocus" @blur="handleMdBlur" @input="handleModelInput"
+        <input
+          class="material-input"
+          type="url"
+          v-if="type === 'url'"
+          v-model="currentValue"
+          :name="name"
+          :placeholder="fillPlaceHolder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :autocomplete="autoComplete"
+          :required="required"
+          @focus="handleMdFocus"
+          @blur="handleMdBlur"
+          @input="handleModelInput"
         >
       </label>
       <label>
-        <input v-if="type === 'number'" v-model="currentValue" :name="name" :placeholder="fillPlaceHolder" :step="step"
-               :readonly="readonly" :disabled="disabled" :autocomplete="autoComplete" :max="max" :min="min" :minlength="minlength"
-               :maxlength="maxlength" :required="required" type="number" class="material-input" @focus="handleMdFocus"
-               @blur="handleMdBlur" @input="handleModelInput"
+        <input
+          class="material-input"
+          type="number"
+          v-if="type === 'number'"
+          v-model="currentValue"
+          :name="name"
+          :placeholder="fillPlaceHolder"
+          :step="step"
+          :readonly="readonly"
+          :disabled="disabled"
+          :autocomplete="autoComplete"
+          :max="max"
+          :min="min"
+          :minlength="minlength"
+          :maxlength="maxlength"
+          :required="required"
+          @focus="handleMdFocus"
+          @blur="handleMdBlur"
+          @input="handleModelInput"
         >
       </label>
       <label>
-        <input v-if="type === 'password'" v-model="currentValue" :name="name" :placeholder="fillPlaceHolder" :readonly="readonly"
-               :disabled="disabled" :autocomplete="autoComplete" :max="max" :min="min" :required="required" type="password"
-               class="material-input" @focus="handleMdFocus" @blur="handleMdBlur" @input="handleModelInput"
+        <input
+          class="material-input"
+          type="password"
+          v-if="type === 'password'"
+          v-model="currentValue"
+          :name="name"
+          :placeholder="fillPlaceHolder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :autocomplete="autoComplete"
+          :max="max"
+          :min="min"
+          :required="required"
+          @focus="handleMdFocus"
+          @blur="handleMdBlur"
+          @input="handleModelInput"
         >
       </label>
       <label>
-        <input v-if="type === 'tel'" v-model="currentValue" :name="name" :placeholder="fillPlaceHolder" :readonly="readonly"
-               :disabled="disabled" :autocomplete="autoComplete" :required="required" type="tel" class="material-input"
-               @focus="handleMdFocus" @blur="handleMdBlur" @input="handleModelInput"
+        <input
+          class="material-input"
+          type="tel"
+          v-if="type === 'tel'"
+          v-model="currentValue"
+          :name="name"
+          :placeholder="fillPlaceHolder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :autocomplete="autoComplete"
+          :required="required"
+          @focus="handleMdFocus"
+          @blur="handleMdBlur"
+          @input="handleModelInput"
         >
       </label>
       <label>
-        <input v-if="type === 'text'" v-model="currentValue" :name="name" :placeholder="fillPlaceHolder" :readonly="readonly"
-               :disabled="disabled" :autocomplete="autoComplete" :minlength="minlength" :maxlength="maxlength" :required="required"
-               type="text" class="material-input" @focus="handleMdFocus" @blur="handleMdBlur" @input="handleModelInput"
+        <input
+          class="material-input"
+          type="text"
+          v-if="type === 'text'"
+          v-model="currentValue"
+          :name="name"
+          :placeholder="fillPlaceHolder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :autocomplete="autoComplete"
+          :minlength="minlength"
+          :maxlength="maxlength"
+          :required="required"
+          @focus="handleMdFocus"
+          @blur="handleMdBlur"
+          @input="handleModelInput"
         >
       </label>
       <span class="material-input-bar" />

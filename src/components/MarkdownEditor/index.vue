@@ -1,5 +1,5 @@
 <template>
-  <div :id="id"></div>
+  <div :id="id"/>
 </template>
 
 <script>
@@ -110,6 +110,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.te-md-splitter {
+  width: 50% !important;
+}
+.te-md-container .te-preview {
+  width: 100% !important;
+}
 </style>

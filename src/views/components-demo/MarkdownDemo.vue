@@ -12,34 +12,62 @@
       <el-tag class="tag-title">
         Basic:
       </el-tag>
-      <MarkdownEditor v-model="content1" height="300px"/>
+      <MarkdownEditor
+        v-model="content1"
+        height="300px"
+      />
     </div>
 
     <div class="editor-container">
       <el-tag class="tag-title">
         Markdown Mode:
       </el-tag>
-      <MarkdownEditor ref="markdownEditor" v-model="content2" :options="{hideModeSwitch:true,previewStyle:'tab'}" height="200px"/>
+      <MarkdownEditor
+        ref="markdownEditor"
+        v-model="content2"
+        :options="{
+          hideModeSwitch: true,
+          previewStyle: 'tab'
+        }"
+        height="200px"
+      />
     </div>
 
     <div class="editor-container">
       <el-tag class="tag-title">
         Customize Toolbar:
       </el-tag>
-      <MarkdownEditor v-model="content3" :options="{ toolbarItems: ['heading','bold','italic']}"/>
+      <MarkdownEditor
+        v-model="content3"
+        :options="{
+          toolbarItems: ['heading', 'bold', 'italic']
+        }"
+      />
     </div>
 
     <div class="editor-container">
       <el-tag class="tag-title">
         I18n:
       </el-tag>
-      <el-alert :closable="false" type="success"
-                title="You can change the language of the admin system to see the effect"
+      <el-alert
+        type="success"
+        title="You can change the language of the admin system to see the effect"
+        :closable="false"
       />
-      <MarkdownEditor ref="markdownEditor" v-model="content4" :language="language" height="300px"/>
+      <MarkdownEditor
+        ref="markdownEditor"
+        v-model="content4"
+        :language="language"
+        height="300px"
+      />
     </div>
 
-    <el-button style="margin-top:80px;" type="primary" icon="el-icon-document" @click="getHtml">
+    <el-button
+      type="primary"
+      icon="el-icon-document"
+      style="margin-top:80px;"
+      @click="getHtml"
+    >
       Get HTML
     </el-button>
     <div v-html="html"></div>

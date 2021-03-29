@@ -3,40 +3,61 @@
     <aside>
       <a href="https://github.com/PanJiaChen/vue-countTo" target="_blank">vue-countTo</a>
     </aside>
-    <CountTo ref="example" :start-val="_startVal" :end-val="_endVal" :duration="_duration"
-             :decimals="_decimals" :separator="_separator" :prefix="_prefix"
-             :suffix="_suffix" :autoplay="false" class="example"
+    <CountTo
+      class="example"
+      ref="example"
+      :start-val="_startVal"
+      :end-val="_endVal"
+      :duration="_duration"
+      :decimals="_decimals"
+      :separator="_separator"
+      :prefix="_prefix"
+      :suffix="_suffix"
+      :autoplay="false"
     />
     <div style="margin-left: 25%;margin-top: 40px;">
-      <label class="label" for="startValInput">startVal:
+      <label class="label" for="startValInput">
+        startVal:
         <input v-model.number="setStartVal" type="number" id="startValInput">
       </label>
-      <label class="label" for="endValInput">endVal:
+      <label class="label" for="endValInput">
+        endVal:
         <input v-model.number="setEndVal" type="number" id="endValInput">
       </label>
-      <label class="label" for="durationInput">duration:
+      <label class="label" for="durationInput">
+        duration:
         <input v-model.number="setDuration" type="number" id="durationInput">
       </label>
       <div class="startBtn example-btn" @click="start">Start</div>
       <div class="pause-resume-btn example-btn" @click="pauseResume">pause/resume</div>
       <br>
-      <label class="label" for="decimalsInput">decimals:
+      <label class="label" for="decimalsInput">
+        decimals:
         <input v-model.number="setDecimals" type="number" id="decimalsInput">
       </label>
-      <label class="label" for="separatorInput">separator:
+      <label class="label" for="separatorInput">
+        separator:
         <input v-model="setSeparator" id="separatorInput">
       </label>
-      <label class="label" for="prefixInput">prefix:
+      <label class="label" for="prefixInput">
+        prefix:
         <input v-model="setPrefix" id="prefixInput">
       </label>
-      <label class="label" for="suffixInput">suffix:
+      <label class="label" for="suffixInput">
+        suffix:
         <input v-model="setSuffix" id="suffixInput">
       </label>
     </div>
     <aside>
-      <CountTo :start-val='_startVal' :end-val='_endVal' :duration='_duration'
-               :decimals='_decimals' :separator='_separator' :prefix='_prefix'
-               :suffix='_suffix' :autoplay=false
+      <CountTo
+        :start-val='_startVal'
+        :end-val='_endVal'
+        :duration='_duration'
+        :decimals='_decimals'
+        :separator='_separator'
+        :prefix='_prefix'
+        :suffix='_suffix'
+        :autoplay=false
       />
     </aside>
   </div>

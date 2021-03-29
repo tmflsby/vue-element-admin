@@ -1,22 +1,40 @@
 <template>
-  <div v-show="value" class="vue-image-crop-upload">
+  <div class="vue-image-crop-upload" v-show="value">
     <div class="vicp-wrap">
       <div class="vicp-close" @click="off">
         <i class="vicp-icon4"></i>
       </div>
 
-      <div v-show="step === 1" class="vicp-step1">
-        <div class="vicp-drop-area" @dragleave="preventDefault" @dragover="preventDefault"
-             @dragenter="preventDefault" @click="handleClick" @drop="handleChange"
+      <div class="vicp-step1" v-show="step === 1">
+        <div
+          class="vicp-drop-area"
+          @dragleave="preventDefault"
+          @dragover="preventDefault"
+          @dragenter="preventDefault"
+          @click="handleClick"
+          @drop="handleChange"
         >
-          <i v-show="loading !== 1" class="vicp-icon1">
+          <i class="vicp-icon1" v-show="loading !== 1">
             <i class="vicp-icon1-arrow"></i>
             <i class="vicp-icon1-body"></i>
             <i class="vicp-icon1-bottom"></i>
           </i>
-          <span v-show="loading !== 1" class="vicp-hint">{{ lang.hint }}</span>
-          <span v-show="!isSupported" class="vicp-no-supported-hint">{{ lang.noSupported }}</span>
-          <input v-show="false" v-if="step === 1" ref="fileinput" type="file" @change="handleChange">
+          <span class="vicp-hint" v-show="loading !== 1">
+            {{ lang.hint }}
+          </span>
+          <span
+            class="vicp-no-supported-hint"
+            v-show="!isSupported"
+          >
+            {{ lang.noSupported }}
+          </span>
+          <input
+            type="file"
+            ref="fileinput"
+            v-show="false"
+            v-if="step === 1"
+            @change="handleChange"
+          >
         </div>
         <div v-show="hasError" class="vicp-error">
           <i class="vicp-icon2"></i>
@@ -31,39 +49,60 @@
         <div class="vicp-crop">
           <div v-show="true" class="vicp-crop-left">
             <div class="vicp-img-container">
-              <img ref="img" alt="" :src="sourceImgUrl" :style="sourceImgStyle" class="vicp-img" draggable="false"
-                   @drag="preventDefault" @dragstart="preventDefault" @dragend="preventDefault"
-                   @dragleave="preventDefault" @dragover="preventDefault" @dragenter="preventDefault"
-                   @drop="preventDefault" @touchstart="imgStartMove" @touchmove="imgMove"
-                   @touchend="createImg" @touchcancel="createImg" @mousedown="imgStartMove"
-                   @mousemove="imgMove" @mouseup="createImg" @mouseout="createImg"
+              <img
+                class="vicp-img"
+                ref="img"
+                alt=""
+                :src="sourceImgUrl"
+                :style="sourceImgStyle"
+                draggable="false"
+                @drag="preventDefault"
+                @dragstart="preventDefault"
+                @dragend="preventDefault"
+                @dragleave="preventDefault"
+                @dragover="preventDefault"
+                @dragenter="preventDefault"
+                @drop="preventDefault"
+                @touchstart="imgStartMove"
+                @touchmove="imgMove"
+                @touchend="createImg"
+                @touchcancel="createImg"
+                @mousedown="imgStartMove"
+                @mousemove="imgMove"
+                @mouseup="createImg"
+                @mouseout="createImg"
               >
-              <div :style="sourceImgShadeStyle" class="vicp-img-shade vicp-img-shade-1"></div>
-              <div :style="sourceImgShadeStyle" class="vicp-img-shade vicp-img-shade-2"></div>
+              <div class="vicp-img-shade vicp-img-shade-1" :style="sourceImgShadeStyle"></div>
+              <div class="vicp-img-shade vicp-img-shade-2" :style="sourceImgShadeStyle"></div>
             </div>
 
             <div class="vicp-range">
               <label>
-                <input :value="scale.range" type="range" step="1"
-                       min="0" max="100" @input="zoomChange"
+                <input
+                  type="range"
+                  :value="scale.range"
+                  step="1"
+                  min="0"
+                  max="100"
+                  @input="zoomChange"
                 >
               </label>
               <i class="vicp-icon5" @mousedown="startZoomSub" @mouseout="endZoomSub" @mouseup="endZoomSub"></i>
               <i class="vicp-icon6" @mousedown="startZoomAdd" @mouseout="endZoomAdd" @mouseup="endZoomAdd"></i>
             </div>
 
-            <div v-if="!noRotate" class="vicp-rotate">
+            <div class="vicp-rotate" v-if="!noRotate">
               <i @mousedown="startRotateLeft" @mouseout="endRotate" @mouseup="endRotate">↺</i>
               <i @mousedown="startRotateRight" @mouseout="endRotate" @mouseup="endRotate">↻</i>
             </div>
           </div>
-          <div v-show="true" class="vicp-crop-right">
+          <div class="vicp-crop-right" v-show="true">
             <div class="vicp-preview">
-              <div v-if="!noSquare" class="vicp-preview-item">
+              <div class="vicp-preview-item" v-if="!noSquare">
                 <img :src="createImgUrl" alt="" :style="previewStyle">
                 <span>{{ lang.preview }}</span>
               </div>
-              <div v-if="!noCircle" class="vicp-preview-item vicp-preview-item-circle">
+              <div class="vicp-preview-item vicp-preview-item-circle" v-if="!noCircle">
                 <img :src="createImgUrl" alt="" :style="previewStyle">
                 <span>{{ lang.preview }}</span>
               </div>
@@ -76,17 +115,17 @@
         </div>
       </div>
 
-      <div v-if="step === 3" class="vicp-step3">
+      <div class="vicp-step3" v-if="step === 3">
         <div class="vicp-upload">
-          <span v-show="loading === 1" class="vicp-loading">{{ lang.loading }}</span>
+          <span class="vicp-loading" v-show="loading === 1">{{ lang.loading }}</span>
           <div class="vicp-progress-wrap">
-            <span v-show="loading === 1" :style="progressStyle" class="vicp-progress"></span>
+            <span class="vicp-progress" v-show="loading === 1" :style="progressStyle"></span>
           </div>
-          <div v-show="hasError" class="vicp-error">
+          <div class="vicp-error" v-show="hasError">
             <i class="vicp-icon2"></i>
             {{ errorMsg }}
           </div>
-          <div v-show="loading === 2" class="vicp-success">
+          <div class="vicp-success" v-show="loading === 2">
             <i class="vicp-icon3"></i>
             {{ lang.success }}
           </div>
@@ -869,6 +908,7 @@ export default {
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.18s;
   transition: -webkit-transform 0.18s;
+  transition: transform 0.18s;
   transition: transform 0.18s, -webkit-transform 0.18s;
   -webkit-transform: rotate(0);
   -ms-transform: rotate(0);
@@ -917,11 +957,11 @@ export default {
   height: 42px;
   overflow: hidden;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step1,
-.vicp-drop-area,
-.vicp-icon1,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step1
+.vicp-drop-area
+.vicp-icon1
 .vicp-icon1-arrow {
   display: block;
   margin: 0 auto;
@@ -931,11 +971,11 @@ export default {
   border-left: 14.7px solid transparent;
   border-right: 14.7px solid transparent;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step1,
-.vicp-drop-area,
-.vicp-icon1,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step1
+.vicp-drop-area
+.vicp-icon1
 .vicp-icon1-body {
   display: block;
   width: 12.6px;
@@ -943,11 +983,11 @@ export default {
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.3);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step1,
-.vicp-drop-area,
-.vicp-icon1,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step1
+.vicp-drop-area
+.vicp-icon1
 .vicp-icon1-bottom {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -963,10 +1003,10 @@ export default {
   color: #666;
   line-height: 30px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step1,
-.vicp-drop-area,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step1
+.vicp-drop-area
 .vicp-no-supported-hint {
   display: block;
   position: absolute;
@@ -992,11 +1032,11 @@ export default {
 .vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left {
   float: left;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
 .vicp-img-container {
   position: relative;
   display: block;
@@ -1005,12 +1045,12 @@ export default {
   background-color: #e5e5e0;
   overflow: hidden;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-img-container,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-img-container
 .vicp-img {
   position: absolute;
   display: block;
@@ -1020,54 +1060,54 @@ export default {
   -ms-user-select: none;
   user-select: none;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-img-container,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-img-container
 .vicp-img-shade {
   -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
   position: absolute;
   background-color: rgba(241, 242, 243, 0.8);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-img-container,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-img-container
 .vicp-img-shade.vicp-img-shade-1 {
   top: 0;
   left: 0;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-img-container,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-img-container
 .vicp-img-shade.vicp-img-shade-2 {
   bottom: 0;
   right: 0;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
 .vicp-rotate {
   position: relative;
   width: 240px;
   height: 18px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-rotate,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-rotate
 i {
   display: block;
   width: 18px;
@@ -1081,60 +1121,60 @@ i {
   color: #fff;
   overflow: hidden;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-rotate,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-rotate
 i:hover {
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.14);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-rotate,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-rotate
 i:first-child {
   float: left;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-rotate,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-rotate
 i:last-child {
   float: right;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
 .vicp-range {
   position: relative;
   margin: 30px 0 10px 0;
   width: 240px;
   height: 18px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon5,
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon6 {
   position: absolute;
   top: 0;
@@ -1143,40 +1183,40 @@ i:last-child {
   border-radius: 100%;
   background-color: rgba(0, 0, 0, 0.08);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon5:hover,
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon6:hover {
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.14);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon5 {
   left: 0;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon5::before {
   position: absolute;
   content: "";
@@ -1187,21 +1227,21 @@ i:last-child {
   height: 2px;
   background-color: #fff;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon6 {
   right: 0;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon6::before {
   position: absolute;
   content: "";
@@ -1212,12 +1252,12 @@ i:last-child {
   height: 2px;
   background-color: #fff;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 .vicp-icon6::after {
   position: absolute;
   content: "";
@@ -1228,12 +1268,12 @@ i:last-child {
   height: 12px;
   background-color: #fff;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"] {
   display: block;
   padding-top: 5px;
@@ -1251,21 +1291,21 @@ input[type="range"] {
   /* 轨道
                ---------------------------------------------------------------*/
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:focus {
   outline: none;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-webkit-slider-thumb {
   -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
@@ -1280,12 +1320,12 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-moz-range-thumb {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
   -moz-appearance: none;
@@ -1298,12 +1338,12 @@ input[type="range"]::-moz-range-thumb {
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-ms-thumb {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
   appearance: none;
@@ -1315,34 +1355,34 @@ input[type="range"]::-ms-thumb {
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:active::-moz-range-thumb {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
   width: 14px;
   height: 14px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:active::-ms-thumb {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
   width: 14px;
   height: 14px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:active::-webkit-slider-thumb {
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
@@ -1350,12 +1390,12 @@ input[type="range"]:active::-webkit-slider-thumb {
   width: 14px;
   height: 14px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-webkit-slider-runnable-track {
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
@@ -1366,12 +1406,12 @@ input[type="range"]::-webkit-slider-runnable-track {
   border: none;
   background-color: rgba(68, 170, 119, 0.3);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-moz-range-track {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   width: 100%;
@@ -1381,12 +1421,12 @@ input[type="range"]::-moz-range-track {
   border: none;
   background-color: rgba(68, 170, 119, 0.3);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-ms-track {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   width: 100%;
@@ -1398,78 +1438,78 @@ input[type="range"]::-ms-track {
   border-radius: 2px;
   border: none;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-ms-fill-lower {
   background-color: rgba(68, 170, 119, 0.3);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]::-ms-fill-upper {
   background-color: rgba(68, 170, 119, 0.15);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:focus::-webkit-slider-runnable-track {
   background-color: rgba(68, 170, 119, 0.5);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:focus::-moz-range-track {
   background-color: rgba(68, 170, 119, 0.5);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:focus::-ms-fill-lower {
   background-color: rgba(68, 170, 119, 0.45);
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-left,
-.vicp-range,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-left
+.vicp-range
 input[type="range"]:focus::-ms-fill-upper {
   background-color: rgba(68, 170, 119, 0.25);
 }
 .vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right {
   float: right;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-right,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-right
 .vicp-preview {
   height: 150px;
   overflow: hidden;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-right,
-.vicp-preview,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-right
+.vicp-preview
 .vicp-preview-item {
   position: relative;
   padding: 5px;
@@ -1478,13 +1518,13 @@ input[type="range"]:focus::-ms-fill-upper {
   float: left;
   margin-right: 16px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-right,
-.vicp-preview,
-.vicp-preview-item,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-right
+.vicp-preview
+.vicp-preview-item
 span {
   position: absolute;
   bottom: -30px;
@@ -1494,13 +1534,13 @@ span {
   display: block;
   text-align: center;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-right,
-.vicp-preview,
-.vicp-preview-item,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-right
+.vicp-preview
+.vicp-preview-item
 img {
   position: absolute;
   display: block;
@@ -1518,22 +1558,22 @@ img {
   -ms-user-select: none;
   user-select: none;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-right,
-.vicp-preview,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-right
+.vicp-preview
 .vicp-preview-item.vicp-preview-item-circle {
   margin-right: 0;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step2,
-.vicp-crop,
-.vicp-crop-right,
-.vicp-preview,
-.vicp-preview-item.vicp-preview-item-circle,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step2
+.vicp-crop
+.vicp-crop-right
+.vicp-preview
+.vicp-preview-item.vicp-preview-item-circle
 img {
   border-radius: 100%;
 }
@@ -1559,11 +1599,11 @@ img {
   background-color: rgba(0, 0, 0, 0.08);
   border-radius: 3px;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step3,
-.vicp-upload,
-.vicp-progress-wrap,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step3
+.vicp-upload
+.vicp-progress-wrap
 .vicp-progress {
   position: relative;
   display: block;
@@ -1598,11 +1638,11 @@ img {
   -webkit-animation: vicp_progress 0.5s linear infinite;
   animation: vicp_progress 0.5s linear infinite;
 }
-.vue-image-crop-upload,
-.vicp-wrap,
-.vicp-step3,
-.vicp-upload,
-.vicp-progress-wrap,
+.vue-image-crop-upload
+.vicp-wrap
+.vicp-step3
+.vicp-upload
+.vicp-progress-wrap
 .vicp-progress::after {
   content: "";
   position: absolute;
@@ -1729,6 +1769,9 @@ img {
   -ms-transform: scale(2);
   transform: scale(2);
   -webkit-transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
-  transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;
+  transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
+  transition: opacity 1.2s ease-out, transform 0.6s ease-out;
+  transition: opacity 1.2s ease-out, transform 0.6s ease-out,
+  -webkit-transform 0.6s ease-out;
 }
 </style>

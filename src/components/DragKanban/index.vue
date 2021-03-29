@@ -1,8 +1,17 @@
 <template>
   <div class="board-column">
     <div class="board-column-header">{{ headerText }}</div>
-    <DraggableComponent :list="list" v-bind="$attrs" class="board-column-content" :set-data="setData">
-      <div v-for="element in list" :key="element.id" class="board-item">
+    <DraggableComponent
+      class="board-column-content"
+      v-bind="$attrs"
+      :list="list"
+      :set-data="setData"
+    >
+      <div
+        class="board-item"
+        v-for="element in list"
+        :key="element.id"
+      >
         {{ element.name }} {{ element.id }}
       </div>
     </DraggableComponent>

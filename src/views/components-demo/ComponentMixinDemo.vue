@@ -2,36 +2,36 @@
   <div class="mixin-components-container">
     <el-row>
       <el-card class="box-card">
-        <div slot="header" class="clearfix">
+        <div class="clearfix" slot="header">
           <span>Buttons</span>
         </div>
         <div style="margin-bottom:50px;">
-          <el-col :span="4" class="text-center">
+          <el-col class="text-center" :span="4">
             <router-link class="pan-btn blue-btn" to="/documentation/index">
               Documentation
             </router-link>
           </el-col>
-          <el-col :span="4" class="text-center">
+          <el-col class="text-center" :span="4">
             <router-link class="pan-btn light-blue-btn" to="/icon/index">
               Icons
             </router-link>
           </el-col>
-          <el-col :span="4" class="text-center">
+          <el-col class="text-center" :span="4">
             <router-link class="pan-btn pink-btn" to="/excel/export-excel">
               Excel
             </router-link>
           </el-col>
-          <el-col :span="4" class="text-center">
+          <el-col class="text-center" :span="4">
             <router-link class="pan-btn green-btn" to="/table/complex-table">
               Table
             </router-link>
           </el-col>
-          <el-col :span="4" class="text-center">
+          <el-col class="text-center" :span="4">
             <router-link class="pan-btn tiffany-btn" to="/example/create">
               Form
             </router-link>
           </el-col>
-          <el-col :span="4" class="text-center">
+          <el-col class="text-center" :span="4">
             <router-link class="pan-btn yellow-btn" to="/theme/index">
               Theme
             </router-link>
@@ -49,7 +49,12 @@
           <div style="height:100px;">
             <el-form :model="demo" :rules="demoRules">
               <el-form-item prop="title">
-                <MDInput v-model="demo.title" icon="el-icon-search" name="title" placeholder="输入标题">
+                <MDInput
+                  name="title"
+                  icon="el-icon-search"
+                  placeholder="输入标题"
+                  v-model="demo.title"
+                >
                   标题
                 </MDInput>
               </el-form-item>
@@ -60,7 +65,7 @@
 
       <el-col :span="6">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
+          <div class="clearfix" slot="header">
             <span>图片hover效果</span>
           </div>
           <div class="component-item">
@@ -73,7 +78,7 @@
 
       <el-col :span="6">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
+          <div class="clearfix" slot="header">
             <span>水波纹 waves v-directive</span>
           </div>
           <div class="component-item">
@@ -90,7 +95,7 @@
             <span>hover text</span>
           </div>
           <div class="component-item">
-            <Mallki class-name="mallki-text" text="vue-element-admin" />
+            <Mallki class-name="mallki-text" text="vue-element-admin"/>
           </div>
         </el-card>
       </el-col>
@@ -99,11 +104,11 @@
     <el-row :gutter="20" style="margin-top:50px;">
       <el-col :span="8">
         <el-card class="box-card">
-          <div slot="header" class="clearfix">
+          <div class="clearfix" slot="header">
             <span>Share</span>
           </div>
           <div class="component-item" style="height:420px;">
-            <DropdownMenu :items="articleList" style="margin:0 auto;" title="系列文章" />
+            <DropdownMenu title="系列文章" :items="articleList" style="margin:0 auto;"/>
           </div>
         </el-card>
       </el-col>
