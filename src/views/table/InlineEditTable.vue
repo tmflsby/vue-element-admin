@@ -1,31 +1,64 @@
 <template>
   <div class="app-container">
-    <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
-      <el-table-column align="center" :label="$t('table.id')" width="80">
+    <el-table
+      style="width: 100%"
+      v-loading="listLoading"
+      :data="list"
+      border
+      fit
+      highlight-current-row
+    >
+      <el-table-column
+        align="center"
+        width="80"
+        :label="$t('table.id')"
+      >
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="180px" align="center" :label="$t('table.date')">
+      <el-table-column
+        align="center"
+        width="180"
+        :label="$t('table.date')"
+      >
         <template slot-scope="{row}">
-          <span>{{ row.timestamp | parseTime("{y}-{m}-{d} {h}:{i}") }}</span>
+          <span>
+            {{ row.timestamp | parseTime("{y}-{m}-{d} {h}:{i}") }}
+          </span>
         </template>
       </el-table-column>
 
-      <el-table-column width="120px" align="center" :label="$t('table.author')">
+      <el-table-column
+        align="center"
+        width="120"
+        :label="$t('table.author')"
+      >
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="100px" :label="$t('table.importance')">
+      <el-table-column
+        width="100"
+        :label="$t('table.importance')"
+      >
         <template slot-scope="{row}">
-          <SvgIcon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon"/>
+          <SvgIcon
+            class="meta-item__icon"
+            icon-class="star"
+            v-for="n in + row.importance"
+            :key="n"
+          />
         </template>
       </el-table-column>
 
-      <el-table-column class-name="status-col" :label="$t('table.status')" width="110">
+      <el-table-column
+        class-name="status-col"
+        width="110"
+        :label="$t('table.status')"
+      >
         <template slot-scope="{row}">
           <el-tag :type="row.status | statusFilter">
             {{ row.status }}
@@ -33,11 +66,24 @@
         </template>
       </el-table-column>
 
-      <el-table-column min-width="300px" :label="$t('table.title')">
+      <el-table-column
+        min-width="300"
+        :label="$t('table.title')"
+      >
         <template slot-scope="{row}">
           <template v-if="row.edit">
-            <el-input v-model="row.title" class="edit-input" size="small" />
-            <el-button class="cancel-btn" size="small" icon="el-icon-refresh" type="warning" @click="cancelEdit(row)">
+            <el-input
+              class="edit-input"
+              size="small"
+              v-model="row.title"
+            />
+            <el-button
+              class="cancel-btn"
+              size="small"
+              icon="el-icon-refresh"
+              type="warning"
+              @click="cancelEdit(row)"
+            >
               {{ $t('table.cancel') }}
             </el-button>
           </template>
@@ -45,12 +91,28 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" :label="$t('table.actions')" width="120">
+      <el-table-column
+        align="center"
+        width="120"
+        :label="$t('table.actions')"
+      >
         <template slot-scope="{row}">
-          <el-button v-if="row.edit" type="success" size="small" icon="el-icon-circle-check-outline" @click="confirmEdit(row)">
+          <el-button
+            type="success"
+            size="small"
+            icon="el-icon-circle-check-outline"
+            v-if="row.edit"
+            @click="confirmEdit(row)"
+          >
             Ok
           </el-button>
-          <el-button v-else type="primary" size="small" icon="el-icon-edit" @click="row.edit=!row.edit">
+          <el-button
+            type="primary"
+            size="small"
+            icon="el-icon-edit"
+            v-else
+            @click="row.edit=!row.edit"
+          >
             {{ $t('table.edit') }}
           </el-button>
         </template>
