@@ -1,7 +1,13 @@
 <template>
   <div class="upload-container">
-    <el-upload :data="dataObj" :multiple="false" :show-file-list="false" :on-success="handleImageSuccess"
-               class="image-uploader" drag action="https://httpbin.org/post"
+    <el-upload
+      class="image-uploader"
+      :data="dataObj"
+      :multiple="false"
+      :show-file-list="false"
+      :on-success="handleImageSuccess"
+      drag
+      action="https://httpbin.org/post"
     >
       <i class="el-icon-upload"/>
       <div class="el-upload__text">
@@ -9,7 +15,7 @@
       </div>
     </el-upload>
     <div class="image-preview image-app-preview">
-      <div v-show="imageUrl.length>1" class="image-preview-wrapper">
+      <div class="image-preview-wrapper" v-show="imageUrl.length>1">
         <img :src="imageUrl" alt="">
         <div class="image-preview-action">
           <i class="el-icon-delete" @click="rmImage"/>
@@ -17,7 +23,7 @@
       </div>
     </div>
     <div class="image-preview">
-      <div v-show="imageUrl.length>1" class="image-preview-wrapper">
+      <div class="image-preview-wrapper" v-show="imageUrl.length>1">
         <img :src="imageUrl" alt="">
         <div class="image-preview-action">
           <i class="el-icon-delete" @click="rmImage"/>
@@ -28,7 +34,8 @@
 </template>
 
 <script>
-import { getToken } from '@/api/qiniu';
+import {getToken} from '@/api/qiniu';
+
 export default {
     name: 'SingleImageUpload',
     props: {
@@ -63,8 +70,7 @@ export default {
         return new Promise((resolve, reject) => {
           getToken().then(response => {
             const key = response.data.qiniu_key;
-            const token = response.data.qiniu_token;
-            _self._data.dataObj.token = token;
+            _self._data.dataObj.token = response.data.qiniu_token;
             _self._data.dataObj.key = key;
             this.tempUrl = response.data.qiniu_url;
             resolve(true);
