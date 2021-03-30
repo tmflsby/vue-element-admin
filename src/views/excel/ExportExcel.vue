@@ -4,7 +4,13 @@
       <FilenameOption v-model="filename"/>
       <AutoWidthOption v-model="autoWidth"/>
       <BookTypeOption v-model="bookType"/>
-      <el-button :loading="downloadLoading" style="margin:0 0 20px 20px;" type="primary" icon="el-icon-document" @click="handleDownload">
+      <el-button
+        style="margin:0 0 20px 20px;"
+        type="primary"
+        icon="el-icon-document"
+        :loading="downloadLoading"
+        @click="handleDownload"
+      >
         {{ $t('excel.export') }} Excel
       </el-button>
       <a href="https://panjiachen.github.io/vue-element-admin-site/feature/component/excel.html" target="_blank" style="margin-left:15px;">
@@ -12,8 +18,15 @@
       </a>
     </div>
 
-    <el-table v-loading="listLoading" :data="list" element-loading-text="Loading..." border fit highlight-current-row>
-      <el-table-column align="center" label="Id" width="95">
+    <el-table
+      v-loading="listLoading"
+      :data="list"
+      element-loading-text="Loading..."
+      border
+      fit
+      highlight-current-row
+    >
+      <el-table-column align="center" width="95" label="Id">
         <template slot-scope="scope">
           {{ scope.row.id }}
         </template>
@@ -25,22 +38,24 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Author" width="110" align="center">
+      <el-table-column align="center" width="110" label="Author">
         <template slot-scope="scope">
           <el-tag>{{ scope.row.author }}</el-tag>
         </template>
       </el-table-column>
 
-      <el-table-column label="Readings" width="115" align="center">
+      <el-table-column align="center" width="115" label="Readings">
         <template slot-scope="scope">
           {{ scope.row.pageviews }}
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Date" width="220">
+      <el-table-column align="center" width="220" label="Date">
         <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.timestamp | parseTime("{y}-{m}-{d} {h}:{i}") }}</span>
+          <i class="el-icon-time"/>
+          <span>
+            {{ scope.row.timestamp | parseTime("{y}-{m}-{d} {h}:{i}") }}
+          </span>
         </template>
       </el-table-column>
     </el-table>

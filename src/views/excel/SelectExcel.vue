@@ -1,18 +1,36 @@
 <template>
   <div class="app-container">
-    <el-input v-model="filename" :placeholder="$t('excel.placeholder')" style="width:350px;" prefix-icon="el-icon-document"/>
-    <el-button :loading="downloadLoading" style="margin-bottom:20px" type="primary" icon="el-icon-document" @click="handleDownload">
+    <el-input
+      style="width:350px;"
+      prefix-icon="el-icon-document"
+      v-model="filename"
+      :placeholder="$t('excel.placeholder')"
+    />
+    <el-button
+      style="margin-bottom:20px"
+      type="primary"
+      icon="el-icon-document"
+      :loading="downloadLoading"
+      @click="handleDownload"
+    >
       {{ $t('excel.selectedExport') }}
     </el-button>
     <a href="https://panjiachen.github.io/vue-element-admin-site/feature/component/excel.html" target="_blank" style="margin-left:15px;">
       <el-tag type="info">Documentation</el-tag>
     </a>
-    <el-table ref="multipleTable" v-loading="listLoading" :data="list" element-loading-text="拼命加载中"
-              border fit highlight-current-row @selection-change="handleSelectionChange"
+    <el-table
+      ref="multipleTable"
+      v-loading="listLoading"
+      :data="list"
+      element-loading-text="拼命加载中"
+      border
+      fit
+      highlight-current-row
+      @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" align="center"/>
 
-      <el-table-column align="center" label="Id" width="95">
+      <el-table-column align="center" width="95" label="Id">
         <template slot-scope="scope">
           {{ scope.row.id }}
         </template>
@@ -24,19 +42,19 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Author" width="110" align="center">
+      <el-table-column align="center" width="110" label="Author">
         <template slot-scope="scope">
           <el-tag>{{ scope.row.author }}</el-tag>
         </template>
       </el-table-column>
 
-      <el-table-column label="Readings" width="115" align="center">
+      <el-table-column align="center" width="115" label="Readings">
         <template slot-scope="scope">
           {{ scope.row.pageviews }}
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="PDate" width="220">
+      <el-table-column align="center" width="220" label="PDate">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.display_time }}</span>
@@ -65,7 +83,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      fetchList(this.listQuery).then(response => {
+      fetchList().then(response => {
         this.list = response.data.items;
         this.listLoading = false;
       }).catch(error => {

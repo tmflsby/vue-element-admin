@@ -144,15 +144,17 @@ export const export_table_to_excel = (id) => {
   }), "test.xlsx")
 };
 
-export const export_json_to_excel = ({
-                                       multiHeader = [],
-                                       header,
-                                       data,
-                                       filename,
-                                       merges = [],
-                                       autoWidth = true,
-                                       bookType = 'xlsx'
-                                     } = {}) => {
+export const export_json_to_excel = (
+  {
+    multiHeader = [],
+    header,
+    data,
+    filename,
+    merges = [],
+    autoWidth = true,
+    bookType = 'xlsx'
+  } = {}
+) => {
   /* original data */
   filename = filename || 'excel-list';
   data = [...data];

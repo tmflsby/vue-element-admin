@@ -1,8 +1,21 @@
 <template>
   <div class="app-container">
-    <UploadExcelComponent :on-success="handleSuccess" :before-upload="beforeUpload" />
-    <el-table :data="tableData" border highlight-current-row style="width: 100%;margin-top:20px;">
-      <el-table-column v-for="item of tableHeader" :key="item" :prop="item" :label="item" />
+    <UploadExcelComponent
+      :before-upload="beforeUpload"
+      :on-success="handleSuccess"
+    />
+    <el-table
+      style="width: 100%;margin-top:20px;"
+      :data="tableData"
+      border
+      highlight-current-row
+    >
+      <el-table-column
+        v-for="item of tableHeader"
+        :key="item"
+        :prop="item"
+        :label="item"
+      />
     </el-table>
   </div>
 </template>

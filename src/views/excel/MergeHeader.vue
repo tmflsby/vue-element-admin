@@ -1,42 +1,56 @@
 <template>
   <div class="app-container">
-    <el-button :loading="downloadLoading" style="margin-bottom:20px" type="primary" icon="el-icon-document" @click="handleDownload">
+    <el-button
+      style="margin-bottom:20px"
+      type="primary"
+      icon="el-icon-document"
+      :loading="downloadLoading"
+      @click="handleDownload"
+    >
       Export
     </el-button>
 
-    <el-table ref="multipleTable" v-loading="listLoading" :data="list" element-loading-text="Loading"
-              border fit highlight-current-row
+    <el-table
+      ref="multipleTable"
+      v-loading="listLoading"
+      :data="list"
+      element-loading-text="Loading"
+      border
+      fit
+      highlight-current-row
     >
-      <el-table-column align="center" label="Id" width="95">
+      <el-table-column align="center" width="95" label="Id">
         <template slot-scope="scope">
           {{ scope.row.id }}
         </template>
       </el-table-column>
 
-      <el-table-column label="Main Information" align="center">
+      <el-table-column align="center" label="Main Information">
         <el-table-column label="Title">
           <template slot-scope="scope">
             {{ scope.row.title }}
           </template>
         </el-table-column>
 
-        <el-table-column label="Author" width="110" align="center">
+        <el-table-column align="center" width="110" label="Author">
           <template slot-scope="scope">
             <el-tag>{{ scope.row.author }}</el-tag>
           </template>
         </el-table-column>
 
-        <el-table-column label="Readings" width="115" align="center">
+        <el-table-column align="center" width="115"  label="Readings">
           <template slot-scope="scope">
             {{ scope.row.pageviews }}
           </template>
         </el-table-column>
       </el-table-column>
 
-      <el-table-column align="center" label="Date" width="220">
+      <el-table-column align="center" width="220" label="Date">
         <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.timestamp | parseTime("{y}-{m}-{d} {h}:{i}") }}</span>
+          <i class="el-icon-time"/>
+          <span>
+            {{ scope.row.timestamp | parseTime("{y}-{m}-{d} {h}:{i}") }}
+          </span>
         </template>
       </el-table-column>
     </el-table>
@@ -61,7 +75,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true;
-      fetchList(this.listQuery).then(response => {
+      fetchList().then(response => {
         this.list = response.data.items;
         this.listLoading = false;
       }).catch(error => {
